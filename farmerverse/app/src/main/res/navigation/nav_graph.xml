@@ -28,6 +28,6 @@
     </fragment>
     <fragment
         android:id="@+id/addSeedFragment"
-        android:name="com.example.farmerverse.AddSeedFragment"
+        android:name="com.example.farmerverse.fragments.AddSeedFragment"
         android:label="Add a Seed" />
 </navigation>
