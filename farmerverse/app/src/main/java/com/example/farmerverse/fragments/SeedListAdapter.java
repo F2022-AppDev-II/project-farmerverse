@@ -29,8 +29,8 @@ class SeedViewHolder extends RecyclerView.ViewHolder {
     public void bind(String text, int growthTime, double quantity)
     {
         seedName.setText(text);
-        daysToGrow.setText(String.format("%s", growthTime));
-        daysToGrow.setText(String.format("%,.2f", quantity));
+        daysToGrow.setText(String.format("%s days", growthTime));
+        quantityTextView.setText(String.format("%,.2f Kg", quantity));
     }
 
     static SeedViewHolder create(ViewGroup parent)

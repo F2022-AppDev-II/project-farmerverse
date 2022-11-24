@@ -2,6 +2,7 @@ package com.example.farmerverse;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -12,15 +13,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.farmerverse.databinding.ActivityMainBinding;
+import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+    public static final int NEW_SEED_ACTIVITY_REQUEST_CODE = 1;
+    private FarmerverseViewModel farmerverseViewModel;
 
 
     @Override
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        farmerverseViewModel = new ViewModelProvider(this).get(FarmerverseViewModel.class);
 
         setSupportActionBar(binding.toolbar);
 
@@ -67,4 +74,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
     }
+
 }
