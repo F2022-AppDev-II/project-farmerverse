@@ -14,12 +14,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.farmerverse.databinding.ActivityMainBinding;
+import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

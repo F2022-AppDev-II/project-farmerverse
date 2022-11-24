@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.databinding.FragmentHomeBinding;
+import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,10 +30,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private NavController navController;
     private NavHostFragment navHostFragment;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FarmerverseViewModel farmerverseViewModel;
 
     public HomeFragment()
     {
@@ -61,10 +60,6 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -76,6 +71,9 @@ public class HomeFragment extends Fragment {
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
+
+
+
 
         view.findViewById(R.id.btnGoToSeeds).setOnClickListener(new View.OnClickListener() {
             @Override

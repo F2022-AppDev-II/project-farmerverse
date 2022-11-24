@@ -3,6 +3,7 @@ package com.example.farmerverse.database;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -13,6 +14,7 @@ import com.example.farmerverse.entities.Seed;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Database(entities = {Seed.class}, version = 1, exportSchema = false)
 public abstract class FarmerverseRoomDatabase extends RoomDatabase {
     public abstract SeedDao seedDao();
 

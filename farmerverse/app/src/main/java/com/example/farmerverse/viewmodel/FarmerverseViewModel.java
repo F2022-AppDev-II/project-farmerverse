@@ -17,14 +17,14 @@ public class FarmerverseViewModel extends AndroidViewModel {
 
     private final LiveData<List<Seed>> allSeeds;
 
-    public FarmerverseViewModel(@NonNull Application application)
+    public FarmerverseViewModel(Application application)
     {
         super(application);
         seedRepository = new SeedRepository(application);
         allSeeds = seedRepository.getAllSeeds();
     }
 
-    LiveData<List<Seed>> getAllSeeds()
+    public LiveData<List<Seed>> getAllSeeds()
     {
         return allSeeds;
     }
