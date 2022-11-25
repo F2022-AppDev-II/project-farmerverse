@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
-import com.google.gson.Gson;
 
 /**
  * A fragment representing a list of Items.
@@ -87,7 +86,8 @@ public class SeedFragment extends Fragment {
         //OnClick
         view.findViewById(R.id.fabAdd).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 navController.navigate(R.id.action_seedFragment_to_addSeedFragment);
             }
         });

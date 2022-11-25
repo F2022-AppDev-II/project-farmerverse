@@ -40,7 +40,8 @@ public class AddSeedFragment extends Fragment {
     private NavController navController;
 
 
-    public AddSeedFragment() {
+    public AddSeedFragment()
+    {
         // Required empty public constructor
     }
 
@@ -53,7 +54,8 @@ public class AddSeedFragment extends Fragment {
      * @return A new instance of fragment AddSeedFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddSeedFragment newInstance(String param1, String param2) {
+    public static AddSeedFragment newInstance(String param1, String param2)
+    {
         AddSeedFragment fragment = new AddSeedFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -61,13 +63,15 @@ public class AddSeedFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_seed, container, false);
 
@@ -89,14 +93,22 @@ public class AddSeedFragment extends Fragment {
 
         Gson gson = new Gson();
 
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                navController.popBackStack();
+            }
+        });
+
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(isFormValid()){
+            public void onClick(View view)
+            {
+                if (isFormValid()) {
                     addSeedToDb();
                     navController.popBackStack();
-                }
-                else{
+                } else {
                     Toast.makeText(getContext(), "Make sure the form is filled in correctly", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -105,20 +117,21 @@ public class AddSeedFragment extends Fragment {
         return view;
     }
 
-    private void addSeedToDb() {
-        Seed seed = new Seed(seedName.getText().toString(), spaceBetweenDouble, quantityDouble, growthTimeInt , weightPerSeedDouble);
+    private void addSeedToDb()
+    {
+        Seed seed = new Seed(seedName.getText().toString(), spaceBetweenDouble, quantityDouble, growthTimeInt, weightPerSeedDouble);
         farmerverseViewModel.insertSeed(seed);
     }
 
-    private boolean isFormValid(){
-        try{
+    private boolean isFormValid()
+    {
+        try {
             spaceBetweenDouble = Double.parseDouble(spaceBetween.getText().toString());
             quantityDouble = Double.parseDouble(quantity.getText().toString());
             growthTimeInt = Integer.parseInt(growthTime.getText().toString());
             weightPerSeedDouble = Double.parseDouble(weightPerSeed.getText().toString());
             return true;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
