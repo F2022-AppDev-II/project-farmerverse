@@ -11,4 +11,10 @@
     <string name="_0_5">0.5</string>
     <string name="weight_per_seed_in_grams">Weight Per Seed in Grams</string>
     <string name="submit">Submit</string>
+    <string name="calculator">Calculator</string>
+    <string name="market">Market</string>
+    <string name="camera">Camera</string>
+    <string name="inventory">Inventory</string>
+    <string name="days_till_harvest">Days till Harvest:</string>
+    <string name="temp_for_temp">Temp for temp</string>
 </resources>
