@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Farmerverse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="AddSeed">Add a Seed</string>
+    <string name="seed_name_hint">Seed Name...</string>
+    <string name="twodecimals">00.00</string>
+    <string name="spacing_in_cm">Spacing in cm</string>
+    <string name="name_of_seed">Name of Seed</string>
+    <string name="estimated_growth_time_in_days">Estimated Growth Time in Days</string>
+    <string name="_0_5">0.5</string>
+    <string name="weight_per_seed_in_grams">Weight Per Seed in Grams</string>
+    <string name="submit">Submit</string>
     <string name="calculator">Calculator</string>
     <string name="market">Market</string>
     <string name="camera">Camera</string>
