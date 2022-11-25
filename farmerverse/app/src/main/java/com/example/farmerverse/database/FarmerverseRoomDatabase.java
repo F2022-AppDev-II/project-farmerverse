@@ -3,20 +3,26 @@ package com.example.farmerverse.database;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.farmerverse.daos.ListingDao;
 import com.example.farmerverse.daos.SeedDao;
+import com.example.farmerverse.entities.Listing;
 import com.example.farmerverse.entities.Seed;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Seed.class}, version = 1, exportSchema = false)
+@Database(entities = {Seed.class, Listing.class}, version = 2, exportSchema = true)
 public abstract class FarmerverseRoomDatabase extends RoomDatabase {
     public abstract SeedDao seedDao();
+
+    public abstract ListingDao listingDao();
 
     private static volatile FarmerverseRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -29,12 +35,20 @@ public abstract class FarmerverseRoomDatabase extends RoomDatabase {
             synchronized (FarmerverseRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FarmerverseRoomDatabase.class, "farmerverse_database")
-                            .addCallback(sRoomDatabaseCallback).build();
+                            .addCallback(sRoomDatabaseCallback).fallbackToDestructiveMigration().build();
                 }
             }
         }
         return INSTANCE;
     }
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database)
+        {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `listing_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` NVARCHAR(50), `quantity` REAL, `price` REAL)");
+        }
+    };
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
