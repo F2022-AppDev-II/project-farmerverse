@@ -73,9 +73,7 @@ public class HomeFragment extends Fragment {
         navController = navHostFragment.getNavController();
 
 
-
-
-        view.findViewById(R.id.btnGoToSeeds).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnInventory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
