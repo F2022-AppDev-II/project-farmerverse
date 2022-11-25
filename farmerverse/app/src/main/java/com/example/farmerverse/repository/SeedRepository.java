@@ -26,6 +26,16 @@ public class SeedRepository {
         return allSeeds;
     }
 
+    public Seed getSeed(int id)
+    {
+        return seedDao.getSeed(id);
+    }
+
+    public void updateSeed(Seed s)
+    {
+        seedDao.updateSeed(s);
+    }
+
     public void insert(Seed seed)
     {
         FarmerverseRoomDatabase.databaseWriteExecutor.execute(() -> {

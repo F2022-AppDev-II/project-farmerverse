@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_seedFragment_to_addSeedFragment"
             app:destination="@id/addSeedFragment" />
+        <action
+            android:id="@+id/action_seedFragment_to_editSeedFragment"
+            app:destination="@id/editSeedFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -30,4 +33,12 @@
         android:id="@+id/addSeedFragment"
         android:name="com.example.farmerverse.fragments.AddSeedFragment"
         android:label="Add a Seed" />
+    <fragment
+        android:id="@+id/editSeedFragment"
+        android:name="com.example.farmerverse.fragments.EditSeedFragment"
+        android:label="EditSeedFragment" >
+        <argument
+            android:name="seedId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

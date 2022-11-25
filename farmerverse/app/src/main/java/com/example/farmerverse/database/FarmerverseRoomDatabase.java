@@ -35,7 +35,7 @@ public abstract class FarmerverseRoomDatabase extends RoomDatabase {
             synchronized (FarmerverseRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FarmerverseRoomDatabase.class, "farmerverse_database")
-                            .addCallback(sRoomDatabaseCallback).fallbackToDestructiveMigration().build();
+                            .addCallback(sRoomDatabaseCallback).fallbackToDestructiveMigration().allowMainThreadQueries().build();
                 }
             }
         }

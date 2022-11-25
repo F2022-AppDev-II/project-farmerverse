@@ -30,6 +30,16 @@ public class FarmerverseViewModel extends AndroidViewModel {
         allListings = listingRepository.getAllListings();
     }
 
+    public Seed getSeed(int id)
+    {
+        return seedRepository.getSeed(id);
+    }
+
+    public void updateSeed(Seed s)
+    {
+        seedRepository.updateSeed(s);
+    }
+
     public LiveData<List<Seed>> getAllSeeds()
     {
         return allSeeds;

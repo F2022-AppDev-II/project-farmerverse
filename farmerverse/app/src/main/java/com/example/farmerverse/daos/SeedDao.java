@@ -24,7 +24,7 @@ public interface SeedDao {
     LiveData<List<Seed>> getAllSeeds();
 
     @Query("SELECT * FROM seed_table WHERE id = :id")
-    LiveData<Seed> getSeed(int id);
+    Seed getSeed(int id);
 
     @Query("DELETE FROM seed_table WHERE id = :id")
     void deleteSeed(int id);
