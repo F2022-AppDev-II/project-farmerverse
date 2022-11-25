@@ -17,4 +17,5 @@
     <string name="inventory">Inventory</string>
     <string name="days_till_harvest">Days till Harvest:</string>
     <string name="temp_for_temp">Temp for temp</string>
+    <string name="home">Home</string>
 </resources>
