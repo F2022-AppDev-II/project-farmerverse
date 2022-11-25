@@ -7,7 +7,7 @@
     android:layout_marginLeft="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginRight="8dp"
-    android:background="@android:color/holo_orange_light">
+    android:background="@drawable/layout_rounded_bg">
 
     <TextView
         android:id="@+id/txtSeedName"
