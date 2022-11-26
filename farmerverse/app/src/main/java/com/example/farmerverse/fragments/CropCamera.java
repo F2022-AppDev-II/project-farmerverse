@@ -22,6 +22,7 @@ import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.core.ImageCaptureException;
+import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.core.Preview;
 import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
@@ -83,12 +84,10 @@ public class CropCamera extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_crop_camera, container, false);
 
+//        getActivity().setContentView(R.layout.fragment_crop_camera);
         context = view.getContext();
-        previewView = getActivity().findViewById(R.id.previewView);
-
-
-        getActivity().setContentView(R.layout.fragment_crop_camera);
-
+        previewView = view.findViewById(R.id.previewView);
+        captureButton = view.findViewById(R.id.captureButton);
 
 
 
@@ -124,26 +123,29 @@ public class CropCamera extends Fragment {
                     bindPreview(cameraProvider);
 
                 }
-                catch(Exception e){
-
+                catch(ExecutionException | InterruptedException e){
+                    System.out.println(e.toString());
                 }
             }
         }, ContextCompat.getMainExecutor(context));
     }
 
     private void bindPreview(ProcessCameraProvider cameraProvider){
-        Preview preview = new Preview.Builder().build();
+        Preview preview = new Preview.Builder()
+                .build();
 
         CameraSelector cameraSelector = new CameraSelector.Builder()
                 .requireLensFacing(CameraSelector.LENS_FACING_BACK)
                 .build();
 
-        ImageAnalysis imageAnalysis = new ImageAnalysis.Builder().build();
+        ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
+                .build();
 
         ImageCapture.Builder builder = new ImageCapture.Builder();
 
         final ImageCapture imageCapture = builder
-                .setTargetRotation(getActivity().getBaseContext().getDisplay().getRotation()).build();
+                .setTargetRotation(getActivity().getBaseContext().getDisplay().getRotation())
+                .build();
 
         preview.setSurfaceProvider(previewView.getSurfaceProvider());
 
@@ -157,38 +159,52 @@ public class CropCamera extends Fragment {
                 imageCapture
         );
 
+        System.out.println("capture button listener");
         captureButton.setOnClickListener( v->{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US);
-            String displayName = dateFormat.format(new Date())+".jpeg";
+            String displayName = dateFormat.format(new Date())+".jpg";
 
             ContentValues contentValues = new ContentValues();
             contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName);
-            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
 
             if(Build.VERSION.SDK_INT > 30){
                 contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CropTracker");
             }
 
             ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(
-                    this.getActivity().getContentResolver(),
+                    context.getContentResolver(),
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                     contentValues
 
             ).build();
 
-            imageCapture.takePicture(outputFileOptions, ContextCompat.getMainExecutor(getActivity().getApplicationContext()
+            imageCapture.takePicture(outputFileOptions, ContextCompat.getMainExecutor(context
             ), new ImageCapture.OnImageSavedCallback() {
-                        @Override
-                        public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                            Toast.makeText(getActivity().getBaseContext(), "Image saved.", Toast.LENGTH_SHORT).show();
-                        }
+                @Override
+                public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                    Toast.makeText(getActivity().getBaseContext(), "Image saved.", Toast.LENGTH_SHORT).show();
+                }
 
-                        @Override
-                        public void onError(@NonNull ImageCaptureException exception) {
-                            exception.printStackTrace();
-                        }
-                    });
+                @Override
+                public void onError(@NonNull ImageCaptureException exception) {
+                    exception.printStackTrace();
+                    Toast.makeText(getActivity().getBaseContext(), "No.", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        if (requestCode == REQUEST_CODE) {
+            if (allPermissionGranted()) {
+                startCamera();
+            } else {
+                Toast.makeText(context, "Permissions not granted", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
+            }
+        }
+    }
 }

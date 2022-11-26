@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CropCamera">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
         android:layout_width="0dp"
