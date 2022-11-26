@@ -104,12 +104,13 @@ public class CropCamera extends Fragment {
 
     private boolean allPermissionGranted(){
         for(String permission : REQUIRED_PERMISSIONS){
-//            if(ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED){
-//                return false;
-//            }
+            if(ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED){
+                return false;
+            }
         }
         return true;
     }
+
 
     private void startCamera(){
         final ListenableFuture<ProcessCameraProvider> cameraProviderListenableFuture
