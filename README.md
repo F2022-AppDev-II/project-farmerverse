@@ -8,6 +8,8 @@ This application was built for our Application Development 2 class at John Abbot
 Built by: Samuel Anderson, Emmanuelle Oleszczuk, Kevin-Christopher Laskai, and Julian Hernandez Delgado
 
 <div align="center">
+Links:
+
 [Features](#features)
 </div>
 
