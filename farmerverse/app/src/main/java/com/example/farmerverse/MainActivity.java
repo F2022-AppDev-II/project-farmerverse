@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.menu_home) {
             while (navController.popBackStack()) {
-
             }
             navController.navigate(R.id.homeFragment);
         }
