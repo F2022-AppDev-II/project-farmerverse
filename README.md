@@ -35,7 +35,7 @@ Links:
 
 ## Credits
 Made by: <br>
-[Samuel Anderson](sanderson-96.github.io)<br>
+[Samuel Anderson](www.sanderson-96.github.io)<br>
 [Kevin-Christopher Laskai]()<br>
 [Emmanuelle Oleszczuk]()<br>
 [Julian Hernandez Delgado]()<br>
