@@ -10,7 +10,32 @@ Built by: Samuel Anderson, Emmanuelle Oleszczuk, Kevin-Christopher Laskai, and J
 <div align="center">
 Links:
 
-[Features](#features)
+[Features](#features) - 
+[References](#references) - 
+[Credits](#credits)
 </div>
 
 ## Features
+
+### Camera
+
+### Seed Inventory Tracker
+
+### Custom Notifications
+
+### Weather Forecast
+
+### Farmers Marketplace
+
+### Countdown to Harvest
+
+## References
+
+<!-- Put links here -->
+
+## Credits
+Made by: <br>
+[Samuel Anderson](sanderson-96.github.io)<br>
+[Kevin-Christopher Laskai]()<br>
+[Emmanuelle Oleszczuk]()<br>
+[Julian Hernandez Delgado]()<br>
