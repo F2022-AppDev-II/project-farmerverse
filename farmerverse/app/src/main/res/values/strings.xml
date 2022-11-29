@@ -27,4 +27,5 @@
     <string name="total_of_seeds_needed">Total of seeds needed</string>
     <string name="seeds_per_square_meter">Seeds per square meter</string>
     <string name="calculate">Calculate</string>
+    <string name="edit_seed">Edit Seed</string>
 </resources>
