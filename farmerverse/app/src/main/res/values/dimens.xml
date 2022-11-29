@@ -2,4 +2,6 @@
 <resources>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="TitleText">32sp</dimen>
+    <dimen name="main_btn_width">150dp</dimen>
+    <dimen name="main_btn_height">75dp</dimen>
 </resources>
