@@ -81,10 +81,10 @@ public class CropCamera extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_crop_camera, container, false);
 
-//        getActivity().setContentView(R.layout.fragment_crop_camera);
         context = view.getContext();
         previewView = view.findViewById(R.id.previewView);
         captureButton = view.findViewById(R.id.captureButton);
@@ -159,7 +159,6 @@ public class CropCamera extends Fragment {
                 imageCapture
         );
 
-        System.out.println("capture button listener");
         captureButton.setOnClickListener( v->{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US);
             String displayName = dateFormat.format(new Date())+".jpg";
@@ -193,18 +192,5 @@ public class CropCamera extends Fragment {
                 }
             });
         });
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_CODE) {
-            if (allPermissionGranted()) {
-                startCamera();
-            } else {
-                Toast.makeText(context, "Permissions not granted", Toast.LENGTH_SHORT).show();
-                getActivity().finish();
-            }
-        }
     }
 }
