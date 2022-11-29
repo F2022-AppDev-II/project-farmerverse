@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/editSeedFragment"
         android:name="com.example.farmerverse.fragments.EditSeedFragment"
-        android:label="EditSeedFragment" >
+        android:label="Edit Seed">
         <argument
             android:name="seedId"
             app:argType="integer" />
@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/calculator"
-        android:name="com.example.farmerverse.calculator"
-        android:label="fragment_calculator"
+        android:name="com.example.farmerverse.fragments.Calculator"
+        android:label="@string/calculator"
         tools:layout="@layout/fragment_calculator" />
 </navigation>
