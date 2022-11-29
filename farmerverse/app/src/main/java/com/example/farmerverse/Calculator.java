@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link calculator#newInstance} factory method to
+ * Use the {@link Calculator#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class calculator extends Fragment {
+public class Calculator extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class calculator extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public calculator() {
+    public Calculator() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class calculator extends Fragment {
      * @return A new instance of fragment calculator.
      */
     // TODO: Rename and change types and number of parameters
-    public static calculator newInstance(String param1, String param2) {
-        calculator fragment = new calculator();
+    public static Calculator newInstance(String param1, String param2) {
+        Calculator fragment = new Calculator();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
