@@ -1,5 +1,7 @@
 package com.example.farmerverse.fragments;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +14,17 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.databinding.FragmentHomeBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,12 +97,40 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        view.findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
                 navController.navigate(R.id.action_homeFragment_to_cameraFragment);
             }
         });
+        setDaysUntilHarvest(view);
 
         return view;
+    }
+
+    private void setDaysUntilHarvest(View view)
+    {
+        TextView days = view.findViewById(R.id.txtNumberOfDays);
+        LocalDate thanksGiving;
+        if (isPastThanksgiving()) {
+            thanksGiving = getThanksgivingDate(Year.now().getValue() + 1);
+        } else {
+            thanksGiving = getThanksgivingDate(Year.now().getValue());
+        }
+        long daysBetween = DAYS.between(LocalDate.now(), thanksGiving);
+        days.setText(String.format("%s Days", daysBetween));
+    }
+
+    private static LocalDate getThanksgivingDate(int year)
+    {
+        LocalDate thanksGiving = Year.of(year).atMonth(Month.NOVEMBER).atDay(1)
+                .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
+        return thanksGiving;
+    }
+
+
+    private boolean isPastThanksgiving()
+    {
+        return java.time.LocalDate.now().isAfter(getThanksgivingDate(Year.now().getValue()));
     }
 }
