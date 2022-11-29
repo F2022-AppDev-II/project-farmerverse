@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_seedFragment"
             app:destination="@id/seedFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_calculator"
+            app:destination="@id/calculator" />
     </fragment>
     <fragment
         android:id="@+id/addSeedFragment"
@@ -41,4 +44,9 @@
             android:name="seedId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/calculator"
+        android:name="com.example.farmerverse.calculator"
+        android:label="fragment_calculator"
+        tools:layout="@layout/fragment_calculator" />
 </navigation>
