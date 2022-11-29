@@ -80,6 +80,13 @@ public class HomeFragment extends Fragment {
                 navController.navigate(R.id.action_homeFragment_to_seedFragment);
             }
         });
+        view.findViewById(R.id.btnCalculator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                navController.navigate(R.id.action_homeFragment_to_calculator);
+            }
+        });
 
         view.findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
