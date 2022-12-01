@@ -25,7 +25,7 @@ import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of {@link Seed}.
  */
 public class SeedFragment extends Fragment {
 

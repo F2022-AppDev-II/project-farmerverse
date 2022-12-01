@@ -27,9 +27,9 @@ import java.time.Year;
 import java.time.temporal.TemporalAdjusters;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Our Home Page Fragment
+ * This is where the user will land after opening the app
+ * The MainActivity Activity defaults to this Fragment as its opening fragment
  */
 public class HomeFragment extends Fragment {
 
@@ -65,6 +65,12 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * This method is called when the fragment is navigated to from a different fragment
+     * Sets the NavController as well as all the onClick listeners for the fragment
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -108,6 +114,11 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Sets the TextView with the number of days until thanksgiving
+     *
+     * @param view The Fragment View
+     */
     private void setDaysUntilHarvest(View view)
     {
         TextView days = view.findViewById(R.id.txtNumberOfDays);
@@ -121,6 +132,13 @@ public class HomeFragment extends Fragment {
         days.setText(String.format("%s Days", daysBetween));
     }
 
+    /**
+     * Gets the exact date of thanksgiving (US version) given a specific year
+     * 4th Thursday in the month of November
+     *
+     * @param year The Year that the day is wanted for
+     * @return LocalDate of thanksgiving
+     */
     private static LocalDate getThanksgivingDate(int year)
     {
         LocalDate thanksGiving = Year.of(year).atMonth(Month.NOVEMBER).atDay(1)
@@ -129,6 +147,11 @@ public class HomeFragment extends Fragment {
     }
 
 
+    /**
+     * Checks if today is past thanksgiving for todays year
+     *
+     * @return True if Today is after thanksgiving, false otherwise
+     */
     private boolean isPastThanksgiving()
     {
         return java.time.LocalDate.now().isAfter(getThanksgivingDate(Year.now().getValue()));
