@@ -17,9 +17,9 @@ Links:
 
 ## Features
 
-### Camera
+### **Camera**
 
-### Seed Inventory Tracker
+### **Seed Inventory Tracker**
 
 <div align="center">
 
@@ -42,13 +42,13 @@ Links:
 </div>
 
 
-### Custom Notifications
+### **Custom Notifications**
 
-### Weather Forecast
+### **Weather Forecast**
 
-### Farmers Marketplace
+### **Farmers Marketplace**
 
-### Countdown to Harvest
+### **Countdown to Harvest**
 
 ## References
 
