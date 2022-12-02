@@ -1,5 +1,7 @@
 package com.example.farmerverse.fragments;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,15 +14,22 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.databinding.FragmentHomeBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+import java.time.temporal.TemporalAdjusters;
+
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Our Home Page Fragment
+ * This is where the user will land after opening the app
+ * The MainActivity Activity defaults to this Fragment as its opening fragment
  */
 public class HomeFragment extends Fragment {
 
@@ -56,6 +65,12 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * This method is called when the fragment is navigated to from a different fragment
+     * Sets the NavController as well as all the onClick listeners for the fragment
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -88,12 +103,57 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        view.findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
                 navController.navigate(R.id.action_homeFragment_to_cameraFragment);
             }
         });
+        setDaysUntilHarvest(view);
 
         return view;
+    }
+
+    /**
+     * Sets the TextView with the number of days until thanksgiving
+     *
+     * @param view The Fragment View
+     */
+    private void setDaysUntilHarvest(View view)
+    {
+        TextView days = view.findViewById(R.id.txtNumberOfDays);
+        LocalDate thanksGiving;
+        if (isPastThanksgiving()) {
+            thanksGiving = getThanksgivingDate(Year.now().getValue() + 1);
+        } else {
+            thanksGiving = getThanksgivingDate(Year.now().getValue());
+        }
+        long daysBetween = DAYS.between(LocalDate.now(), thanksGiving);
+        days.setText(String.format("%s Days", daysBetween));
+    }
+
+    /**
+     * Gets the exact date of thanksgiving (US version) given a specific year
+     * 4th Thursday in the month of November
+     *
+     * @param year The Year that the day is wanted for
+     * @return LocalDate of thanksgiving
+     */
+    private static LocalDate getThanksgivingDate(int year)
+    {
+        LocalDate thanksGiving = Year.of(year).atMonth(Month.NOVEMBER).atDay(1)
+                .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
+        return thanksGiving;
+    }
+
+
+    /**
+     * Checks if today is past thanksgiving for todays year
+     *
+     * @return True if Today is after thanksgiving, false otherwise
+     */
+    private boolean isPastThanksgiving()
+    {
+        return java.time.LocalDate.now().isAfter(getThanksgivingDate(Year.now().getValue()));
     }
 }

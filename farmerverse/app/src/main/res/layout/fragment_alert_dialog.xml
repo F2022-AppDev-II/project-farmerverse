@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_rounded_bg"
+    tools:context=".AlertDialogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/txtAreYouSure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:text="@string/are_you_sure"
+        android:textSize="@dimen/TitleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtAboutToDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:text="@string/you_are_about_to_delete_the_x_seed"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtAreYouSure"
+        app:layout_constraintStart_toStartOf="@+id/txtAreYouSure"
+        app:layout_constraintTop_toBottomOf="@+id/txtAreYouSure" />
+
+    <Button
+        android:id="@+id/btnDeleteNoGoingBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/material_red_800"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:minHeight="@dimen/main_btn_height"
+        android:text="@string/yes_delete"
+        app:layout_constraintEnd_toEndOf="@+id/txtAreYouSure"
+        app:layout_constraintStart_toStartOf="@+id/txtAreYouSure"
+        app:layout_constraintTop_toBottomOf="@+id/txtAboutToDelete" />
+
+    <Button
+        android:id="@+id/btnCancelDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:minHeight="@dimen/main_btn_height"
+        android:text="@string/no_take_me_back"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnDeleteNoGoingBack"
+        app:layout_constraintStart_toStartOf="@+id/btnDeleteNoGoingBack"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteNoGoingBack" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

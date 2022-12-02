@@ -45,6 +45,11 @@ public class FarmerverseViewModel extends AndroidViewModel {
         return allSeeds;
     }
 
+    public void deleteSeed(int id)
+    {
+        seedRepository.deleteSeed(id);
+    }
+
     public LiveData<List<Listing>> getAllListings()
     {
         return allListings;
