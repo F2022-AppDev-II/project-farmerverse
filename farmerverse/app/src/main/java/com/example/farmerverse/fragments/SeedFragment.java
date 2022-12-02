@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+
+import java.util.List;
 
 /**
  * A fragment representing a list of {@link Seed}.
@@ -66,17 +69,25 @@ public class SeedFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_seed_item_list, container, false);
         Context context = view.getContext();
 
-        //RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.list);
-        final SeedListAdapter adapter = new SeedListAdapter((new SeedListAdapter.SeedDiff()));
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         //ViewModel
         farmerverseViewModel = new ViewModelProvider(getActivity()).get(FarmerverseViewModel.class);
-        farmerverseViewModel.getAllSeeds().observe(getActivity(), seeds -> {
-            adapter.submitList(seeds);
+
+        farmerverseViewModel.getAllSeeds().observe(getActivity(), new Observer<List<Seed>>() {
+            @Override
+            public void onChanged(List<Seed> seeds)
+            {
+                //RecyclerView
+                RecyclerView recyclerView = view.findViewById(R.id.list);
+                final SeedListAdapter adapter = new SeedListAdapter((new SeedListAdapter.SeedDiff()));
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                adapter.submitList(seeds);
+            }
         });
+//        farmerverseViewModel.getAllSeeds().observe(getActivity(), seeds -> {
+//            adapter.submitList(seeds);
+//        });
 
         //NavController
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
