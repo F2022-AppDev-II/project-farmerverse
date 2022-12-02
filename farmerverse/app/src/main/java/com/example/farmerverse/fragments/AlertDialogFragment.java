@@ -1,4 +1,4 @@
-package com.example.farmerverse;
+package com.example.farmerverse.fragments;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,8 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 
+import com.example.farmerverse.R;
 import com.example.farmerverse.databinding.FragmentAlertDialogBinding;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;

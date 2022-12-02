@@ -21,6 +21,27 @@ Links:
 
 ### Seed Inventory Tracker
 
+<div align="center">
+
+## View Your Inventory in real time
+
+![Inventory](./readmeimages/seedList.png)
+
+## Add a Seed
+
+![Inventory](./readmeimages/addSeed.png)
+
+## Edit a Seed
+
+![Inventory](./readmeimages/editSeed.png)
+
+## Custom Delete... Just in case
+
+![Inventory](./readmeimages/customDelete.png)
+
+</div>
+
+
 ### Custom Notifications
 
 ### Weather Forecast
