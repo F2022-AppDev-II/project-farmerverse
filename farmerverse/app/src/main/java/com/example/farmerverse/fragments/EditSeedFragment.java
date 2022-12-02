@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.farmerverse.AlertDialogFragment;
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
@@ -57,7 +58,7 @@ public class EditSeedFragment extends Fragment {
     {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_seed, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_seed, container, false);
 
         //Get the seedId in order to query the database to get the seeds info
         Bundle args = getArguments();
@@ -83,6 +84,7 @@ public class EditSeedFragment extends Fragment {
 
         final Button submitBtn = view.findViewById(R.id.btnSubmit);
         final Button cancelBtn = view.findViewById(R.id.btnCancel);
+        final Button deleteBtn = view.findViewById(R.id.btnDelete);
         if (seedId >= 1)
             populateForm();
 
@@ -107,6 +109,16 @@ public class EditSeedFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Make sure the form is filled in correctly", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //are you sure screen
+                AlertDialogFragment dialog = new AlertDialogFragment(seedId);
+                dialog.show(supportFragmentManager, "Alert");
             }
         });
 

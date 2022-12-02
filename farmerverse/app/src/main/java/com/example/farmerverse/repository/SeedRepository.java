@@ -31,6 +31,11 @@ public class SeedRepository {
         return seedDao.getSeed(id);
     }
 
+    public void deleteSeed(int id)
+    {
+        seedDao.deleteSeed(id);
+    }
+
     public void updateSeed(Seed s)
     {
         seedDao.updateSeed(s);
