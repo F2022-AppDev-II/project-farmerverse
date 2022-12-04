@@ -4,9 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -14,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.farmerverse.R;
-import com.example.farmerverse.databinding.FragmentHomeBinding;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

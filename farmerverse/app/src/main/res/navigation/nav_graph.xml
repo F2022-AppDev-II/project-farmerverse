@@ -39,7 +39,9 @@
             app:destination="@id/calculator" />
         <action
             android:id="@+id/action_homeFragment_to_marketFragment"
-            app:destination="@id/marketFragment" />
+            app:destination="@id/marketFragment"
+            app:enterAnim="@animator/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_pop_exit_anim" />
 
     </fragment>
 
@@ -76,7 +78,36 @@
         tools:layout="@layout/fragment_calculator" />
     <fragment
         android:id="@+id/marketFragment"
-        android:name="com.example.farmerverse.fragments.MarketFragment"
-        android:label="fragment_market"
-        tools:layout="@layout/fragment_market_item_list" />
+        android:name="com.example.farmerverse.fragments.Market.MarketFragment"
+        android:label="@string/market"
+        tools:layout="@layout/fragment_market_item_list" >
+        <action
+            android:id="@+id/action_marketFrag_to_addProdFrag"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.farmerverse.fragments.Market.AddProductFragment"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_addProd_to_Home"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_addProd_to_Market"
+            app:destination="@id/marketFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_pop_exit_anim" />
+        <argument
+            android:name="a"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="b"
+            app:argType="integer" />
+    </fragment>
 </navigation>

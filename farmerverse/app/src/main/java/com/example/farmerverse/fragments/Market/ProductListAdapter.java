@@ -1,4 +1,4 @@
-package com.example.farmerverse.fragments;
+package com.example.farmerverse.fragments.Market;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmerverse.R;
-import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.model.Product;
 
 
@@ -79,5 +77,7 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
             return oldItem.getId() == newItem.getId();
         }
     }
+
+
 }
 

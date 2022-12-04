@@ -1,4 +1,4 @@
-package com.example.farmerverse.viewmodel;
+package com.example.farmerverse.repository.viewmodel;
 
 import com.example.farmerverse.model.Product;
 import com.example.farmerverse.model.ProductData;

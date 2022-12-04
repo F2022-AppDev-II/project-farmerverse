@@ -1,4 +1,4 @@
-package com.example.farmerverse.viewmodel;
+package com.example.farmerverse.repository.viewmodel;
 
 import android.app.Application;
 
