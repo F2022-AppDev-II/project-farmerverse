@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Farmerverse</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="AddSeed">Add a Seed</string>
     <string name="seed_name_hint">Seed Name...</string>
     <string name="twodecimals">00.00</string>
@@ -15,7 +13,21 @@
     <string name="market">Market</string>
     <string name="camera">Camera</string>
     <string name="inventory">Inventory</string>
-    <string name="days_till_harvest">Days till Harvest:</string>
+    <string name="days_till_harvest">Days Until Harvest:</string>
     <string name="temp_for_temp">Temp for temp</string>
     <string name="home">Home</string>
+    <string name="SeedType">Type of Seed</string>
+    <string name="_32_cm">32 cm</string>
+    <string name="land_calculator">Land Calculator</string>
+    <string name="square_meters">Square Meters</string>
+    <string name="_32_square_meters">32 Square meters</string>
+    <string name="seed_type">Seed Type</string>
+    <string name="manually_add_seed">Manually add seed</string>
+    <string name="distance_between_the_seeds">Distance between the seeds</string>
+    <string name="total_of_seeds_needed">Total of seeds needed</string>
+    <string name="seeds_per_square_meter">Seeds per square meter</string>
+    <string name="calculate">Calculate</string>
+    <string name="edit_seed">Edit Seed</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

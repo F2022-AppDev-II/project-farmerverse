@@ -8,10 +8,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="271dp"
-        android:layout_height="144dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:background="#AE1E1E"
+        android:layout_marginEnd="16dp"
+        android:background="#4C83A8"
         android:contentDescription="@string/temp_for_temp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,18 +22,18 @@
 
     <Button
         android:id="@+id/btnCalculator"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="64dp"
         android:text="@string/calculator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btnMarket"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
         android:layout_marginEnd="32dp"
         android:text="@string/market"
         app:layout_constraintBottom_toBottomOf="@+id/btnCalculator"
@@ -40,8 +42,8 @@
 
     <Button
         android:id="@+id/btnCamera"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="@string/camera"
@@ -50,8 +52,8 @@
 
     <Button
         android:id="@+id/btnInventory"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
         android:layout_marginEnd="32dp"
         android:text="@string/inventory"
         app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
@@ -60,13 +62,11 @@
 
     <TextView
         android:id="@+id/txtHarvest"
-        android:layout_width="269dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="128dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/days_till_harvest"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

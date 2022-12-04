@@ -33,6 +33,14 @@
             android:id="@+id/action_homeFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
 
+
+      <action
+            android:id="@+id/action_homeFragment_to_calculator"
+            app:destination="@id/calculator" />
+        <action
+            android:id="@+id/action_homeFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
+
     </fragment>
 
     <fragment
@@ -43,11 +51,12 @@
     <fragment
         android:id="@+id/editSeedFragment"
         android:name="com.example.farmerverse.fragments.EditSeedFragment"
-        android:label="EditSeedFragment" >
+        android:label="Edit Seed">
         <argument
             android:name="seedId"
             app:argType="integer" />
     </fragment>
+
 
     <fragment
         android:id="@+id/cameraFragment"
@@ -60,4 +69,14 @@
     </fragment>
 
 
+    <fragment
+        android:id="@+id/calculator"
+        android:name="com.example.farmerverse.fragments.Calculator"
+        android:label="@string/calculator"
+        tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.example.farmerverse.fragments.MarketFragment"
+        android:label="fragment_market"
+        tools:layout="@layout/fragment_market_item_list" />
 </navigation>
