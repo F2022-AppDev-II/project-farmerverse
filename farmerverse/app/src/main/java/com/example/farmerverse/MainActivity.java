@@ -99,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
             }
             navController.navigate(R.id.homeFragment);
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -163,17 +161,10 @@ public class MainActivity extends AppCompatActivity {
             createInformationForNotifcation() ;
         }
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+////////// Resources Used
+//https://www.tutorialspoint.com/how-to-create-everyday-notifications-at-certain-time-in-android#:
+// ~:text=This%20example%20demonstrate%20about%20How%20to%20create%20everyday,2%20%E2%88%92%20Add
+// %20the%20following%20code%20to%20res%2Flayout%2Factivity_main.xml.
