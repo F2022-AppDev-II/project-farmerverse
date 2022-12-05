@@ -60,7 +60,7 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.example.farmerverse.fragments.CropCamera"
+        android:name="com.example.farmerverse.fragments.CropCameraFragment"
         android:label="CameraFragment">
 
 <!--        <action-->
