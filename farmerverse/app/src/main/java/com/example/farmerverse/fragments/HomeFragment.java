@@ -111,6 +111,8 @@ public class HomeFragment extends Fragment {
         });
         setDaysUntilHarvest(view);
 
+        view.findViewById(R.id.btnMarket).setOnClickListener(v -> navController.navigate(R.id.action_homeFragment_to_marketFragment));
+
         return view;
     }
 

@@ -37,7 +37,10 @@
       <action
             android:id="@+id/action_homeFragment_to_calculator"
             app:destination="@id/calculator" />
-            
+        <action
+            android:id="@+id/action_homeFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
+
     </fragment>
 
     <fragment
@@ -79,4 +82,8 @@
         android:name="com.example.farmerverse.fragments.AlertDialogFragment"
         android:label="fragment_alert_dialog"
         tools:layout="@layout/fragment_alert_dialog" />
+        android:id="@+id/marketFragment"
+        android:name="com.example.farmerverse.fragments.MarketFragment"
+        android:label="fragment_market"
+        tools:layout="@layout/fragment_market_item_list" />
 </navigation>
