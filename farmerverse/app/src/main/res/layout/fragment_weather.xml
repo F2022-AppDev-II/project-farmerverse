@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="250dp"
     tools:context=".fragments.WeatherFragment"
     android:background="@color/black_shade_1">
     <ProgressBar
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
 
 
@@ -21,12 +21,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/rlHome"
         android:background="@color/black_shade_1"
-        android:visibility="gone">
+        android:visibility="visible">
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/black_shade_1"
-            android:id="@+id/ivBackground"/>
+            android:id="@+id/ivBackground"
+            android:scaleType="centerCrop"/>
         <TextView
             android:id="@+id/txtCityNameHC"
             android:layout_width="match_parent"
@@ -34,14 +35,14 @@
             android:text="City Name"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/white"/>
         <TextView
             android:layout_below="@id/txtCityNameHC"
             android:id="@+id/txtCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textSize="@dimen/TitleText"
             android:textColor="@color/white"
             android:gravity="center"
@@ -49,11 +50,10 @@
 
         <TextView
             android:layout_below="@id/txtCityName"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:padding="8dp"
             android:text="26"
             android:textColor="@color/white"
             android:textSize="@dimen/TemperatureSize"
@@ -61,12 +61,15 @@
 
         <ImageView
             android:id="@+id/ivIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_below="@+id/txtTemperature"
-            android:layout_margin="8dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/barn"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +77,8 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:id="@+id/txtCondition"
-            android:text="Condition"/>
+            android:text="Condition"
+            android:textSize="16sp"/>
 
 
 
