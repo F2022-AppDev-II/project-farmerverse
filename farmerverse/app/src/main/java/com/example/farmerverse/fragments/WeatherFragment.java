@@ -48,7 +48,7 @@ import java.util.Locale;
  */
 public class WeatherFragment extends Fragment {
 
-    private RelativeLayout homeRl;
+    private RelativeLayout homeRl, rlWeatherRoot;
     private ProgressBar loadingProgressBar;
     private TextView txtCityName, txtCondition, txtTemperature;
     private RecyclerView rvWeather;
@@ -97,6 +97,7 @@ public class WeatherFragment extends Fragment {
         ivBackground = view.findViewById(R.id.ivBackground);
         txtCityName = view.findViewById(R.id.txtCityName);
         homeRl = view.findViewById(R.id.rlHome);
+        rlWeatherRoot = view.findViewById(R.id.rlWeatherRoot);
 
 
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
@@ -171,6 +172,9 @@ public class WeatherFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 loadingProgressBar.setVisibility(View.GONE);
                 homeRl.setVisibility(View.VISIBLE);
+                rlWeatherRoot.setBackground(getResources().getDrawable(R.drawable.transparent_rounded));
+                rlWeatherRoot.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
                 try {
                     String temperature = response.getJSONObject("current").getString("temp_c");
                     txtTemperature.setText(temperature + "°C");
@@ -178,7 +182,7 @@ public class WeatherFragment extends Fragment {
                     String condition = response.getJSONObject("current").getJSONObject("condition").getString("text");
                     String icon = response.getJSONObject("current").getJSONObject("condition").getString("icon");
 
-                    Picasso.get().load("http:".concat(icon)).into(ivIcon);
+                    Picasso.get().load("https:".concat(icon)).into(ivIcon);
 
                     txtCondition.setText(condition);
 

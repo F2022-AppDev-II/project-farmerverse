@@ -95,6 +95,8 @@ public class HomeFragment extends Fragment {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.weather, child).commit();
 
+        view.findViewById(R.id.weather).setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
         view.findViewById(R.id.btnInventory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
