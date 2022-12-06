@@ -17,7 +17,7 @@
         android:contentDescription="@string/temp_for_temp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHarvest"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumberOfDays"
         app:srcCompat="@android:drawable/ic_menu_mapmode" />
 
     <Button
@@ -64,10 +64,21 @@
         android:id="@+id/txtHarvest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_semi_bold"
         android:text="@string/days_till_harvest"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNumberOfDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:text="123 Days"
+        android:textSize="@dimen/TitleText"
+        app:layout_constraintEnd_toEndOf="@+id/txtHarvest"
+        app:layout_constraintTop_toBottomOf="@+id/txtHarvest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

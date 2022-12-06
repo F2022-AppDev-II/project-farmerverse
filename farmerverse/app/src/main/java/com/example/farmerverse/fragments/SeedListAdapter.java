@@ -49,6 +49,7 @@ class SeedViewHolder extends RecyclerView.ViewHolder {
 
 public class SeedListAdapter extends ListAdapter<Seed, SeedViewHolder> {
 
+    //Create List Adapter
     public SeedListAdapter(@NonNull DiffUtil.ItemCallback<Seed> diffCallback)
     {
         super(diffCallback);

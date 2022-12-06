@@ -1,4 +1,5 @@
 package com.example.farmerverse.helpers;
+public class StringWithId {
 
 /**
  * This class is to help with spinners

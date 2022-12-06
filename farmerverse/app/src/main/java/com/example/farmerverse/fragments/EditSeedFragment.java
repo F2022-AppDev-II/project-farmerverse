@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,6 +20,10 @@ import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 import com.google.gson.Gson;
 
+/**
+ * Fragment in which a user will be able to edit a {@link Seed} they clicked on
+ * It will be auto populated with the data from the seed they clicked on
+ */
 public class EditSeedFragment extends Fragment {
     public static final String EXTRA_REPLY = "com.example.android.seedlistsql.REPLY";
     private EditText seedName;
@@ -53,20 +56,24 @@ public class EditSeedFragment extends Fragment {
     {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_seed, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_seed, container, false);
 
+        //Get the seedId in order to query the database to get the seeds info
         Bundle args = getArguments();
         seedId = args.getInt("seedId", -1);
         if (seedId == -1)
-            Toast.makeText(getContext(), "Something Went Wrong...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Something Went Wrong, the Seed was not properly sent in...", Toast.LENGTH_SHORT).show();
 
 
+        //Get the ViewModel
         farmerverseViewModel = new ViewModelProvider(getActivity()).get(FarmerverseViewModel.class);
-        //NavController
+
+        //Get the NavController
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
 
+        //Get the XML items
         seedName = view.findViewById(R.id.editTxtSeedName);
         spaceBetween = view.findViewById(R.id.editTxtSpaceBetween);
         quantity = view.findViewById(R.id.editTxtQuantity);
@@ -75,11 +82,13 @@ public class EditSeedFragment extends Fragment {
 
         final Button submitBtn = view.findViewById(R.id.btnSubmit);
         final Button cancelBtn = view.findViewById(R.id.btnCancel);
+        final Button deleteBtn = view.findViewById(R.id.btnDelete);
         if (seedId >= 1)
             populateForm();
 
         Gson gson = new Gson();
 
+        //Set even listeners
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -101,9 +110,22 @@ public class EditSeedFragment extends Fragment {
             }
         });
 
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //are you sure screen
+                AlertDialogFragment dialog = new AlertDialogFragment(seedId);
+                dialog.show(supportFragmentManager, "Alert");
+            }
+        });
+
         return view;
     }
 
+    /**
+     * Populate the form with the seeds existing data from the database
+     */
     private void populateForm()
     {
         Seed seed = farmerverseViewModel.getSeed(seedId);
@@ -114,6 +136,9 @@ public class EditSeedFragment extends Fragment {
         weightPerSeed.setText(String.format("%.2f", seed.getWeightPerSeed()));
     }
 
+    /**
+     * Update the Database with the edited information
+     */
     private void updateDb()
     {
         Seed s = farmerverseViewModel.getSeed(seedId);
@@ -125,6 +150,11 @@ public class EditSeedFragment extends Fragment {
         farmerverseViewModel.updateSeed(s);
     }
 
+    /**
+     * Checks whether the form is valid or not
+     *
+     * @return true if valid, false otherwise
+     */
     private boolean isFormValid()
     {
         try {

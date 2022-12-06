@@ -17,17 +17,38 @@ Links:
 
 ## Features
 
-### Camera
+### **Camera**
 
-### Seed Inventory Tracker
+### **Seed Inventory Tracker**
 
-### Custom Notifications
+<div align="center">
 
-### Weather Forecast
+## View Your Inventory in real time
 
-### Farmers Marketplace
+![Inventory](./readmeimages/seedList.png)
 
-### Countdown to Harvest
+## Add a Seed
+
+![Inventory](./readmeimages/addSeed.png)
+
+## Edit a Seed
+
+![Inventory](./readmeimages/editSeed.png)
+
+## Custom Delete... Just in case
+
+![Inventory](./readmeimages/customDelete.png)
+
+</div>
+
+
+### **Custom Notifications**
+
+### **Weather Forecast**
+
+### **Farmers Marketplace**
+
+### **Countdown to Harvest**
 
 ## References
 
