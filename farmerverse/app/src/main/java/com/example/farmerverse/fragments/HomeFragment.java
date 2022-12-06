@@ -4,8 +4,11 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -87,6 +90,10 @@ public class HomeFragment extends Fragment {
         navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
 
+
+        Fragment child = new WeatherFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.weather, child).commit();
 
         view.findViewById(R.id.btnInventory).setOnClickListener(new View.OnClickListener() {
             @Override
