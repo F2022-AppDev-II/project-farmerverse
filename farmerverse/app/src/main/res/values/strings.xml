@@ -40,7 +40,7 @@
     <string name="qty_of_prod">Quantity</string>
     <string name="product_price_hint">12.99</string>
     <string name="price_of_prod">Price</string>
-    <string name="done">Done</string>
+    <string name="done">Add</string>
     <string name="go_home">Home</string>
     <string name="go_market">Market</string>
 </resources>

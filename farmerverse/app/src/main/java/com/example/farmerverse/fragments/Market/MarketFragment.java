@@ -93,8 +93,8 @@ public class MarketFragment extends Fragment {
 
     private void goToAddFragment() {
         // Safe Args passing prods repository to add fragment
-//        MarketFragmentDirections.ActionMarketFragToAddProdFrag direction = MarketFragmentDirections.actionMarketFragToAddProdFrag(products);
-//        navController.navigate(R.id.action_marketFrag_to_addProdFrag);
+        MarketFragmentDirections.ActionMarketFragToAddProdFrag direction = MarketFragmentDirections.actionMarketFragToAddProdFrag(products);
+        navController.navigate(direction);
     }
 
     private void test() {

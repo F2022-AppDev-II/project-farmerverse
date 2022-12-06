@@ -103,11 +103,9 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@animator/nav_default_pop_exit_anim" />
         <argument
-            android:name="a"
-            app:argType="integer"
-            android:defaultValue="1" />
-        <argument
-            android:name="b"
-            app:argType="integer" />
+            android:name="argsProductsViewModel"
+            app:argType="com.example.farmerverse.repository.viewmodel.MyProducts" />
+
+
     </fragment>
 </navigation>

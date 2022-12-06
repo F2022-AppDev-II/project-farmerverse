@@ -4,9 +4,10 @@ import com.example.farmerverse.model.Product;
 import com.example.farmerverse.model.ProductData;
 import com.example.farmerverse.repository.IProductRepository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyProducts implements IProductRepository {
+public class MyProducts implements IProductRepository, Serializable {
 
     final int defNumProducts = 10;
     ArrayList<Product> myProds;
@@ -43,6 +44,8 @@ public class MyProducts implements IProductRepository {
         myProds.add(product);
     }
 
+    @Override
+    public Product getLast(){return myProds.get(myProds.size()-1);}
     @Override
     public void delete(int id) {
         myProds.remove(id);
