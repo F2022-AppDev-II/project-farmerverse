@@ -45,6 +45,16 @@ Links:
 ### **Custom Notifications**
 
 ### **Weather Forecast**
+<div align="center">
+
+### Live Weather on the Home Screen
+
+![Weather](./readmeimages/weatherWidget.png)
+
+### Click on the widget for an Hour by Hour view
+
+![Full Weather](./readmeimages/fullWeatherWidget.png)
+</div>
 
 ### **Farmers Marketplace**
 
