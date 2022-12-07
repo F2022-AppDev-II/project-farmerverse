@@ -2,26 +2,20 @@ package com.example.farmerverse;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.farmerverse.databinding.ActivityMainBinding;
-import com.example.farmerverse.entities.Seed;
-import com.example.farmerverse.fragments.WeatherFragment;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 

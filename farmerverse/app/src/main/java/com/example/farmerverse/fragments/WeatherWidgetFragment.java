@@ -11,13 +11,15 @@ import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -31,10 +33,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.farmerverse.R;
-import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,10 +43,10 @@ import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WeatherFragment#newInstance} factory method to
+ * Use the {@link WeatherWidgetFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WeatherFragment extends Fragment {
+public class WeatherWidgetFragment extends Fragment {
 
     private RelativeLayout homeRl, rlWeatherRoot;
     private ProgressBar loadingProgressBar;
@@ -56,8 +56,11 @@ public class WeatherFragment extends Fragment {
     private int PERMISSION_CODE = 1;
     private LocationManager locationManager;
     private String cityName;
+    private NavHostFragment navHostFragment;
+    private NavController navController;
 
-    public WeatherFragment() {
+    public WeatherWidgetFragment()
+    {
         // Required empty public constructor
     }
 
@@ -70,23 +73,27 @@ public class WeatherFragment extends Fragment {
      * @return A new instance of fragment WeatherFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WeatherFragment newInstance(String param1, String param2) {
-        WeatherFragment fragment = new WeatherFragment();
+    public static WeatherWidgetFragment newInstance(String param1, String param2)
+    {
+        WeatherWidgetFragment fragment = new WeatherWidgetFragment();
         return fragment;
     }
 
-    static int getRequstCode() {
+    static int getRequstCode()
+    {
         return 1;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
 
@@ -98,6 +105,10 @@ public class WeatherFragment extends Fragment {
         txtCityName = view.findViewById(R.id.txtCityName);
         homeRl = view.findViewById(R.id.rlHome);
         rlWeatherRoot = view.findViewById(R.id.rlWeatherRoot);
+
+        FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
+        navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
+        navController = navHostFragment.getNavController();
 
 
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
@@ -115,7 +126,8 @@ public class WeatherFragment extends Fragment {
         return view;
     }
 
-    private Location getLastKnownLocation() {
+    private Location getLastKnownLocation()
+    {
         locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
@@ -136,44 +148,52 @@ public class WeatherFragment extends Fragment {
         return bestLocation;
     }
 
-    private String getCityName(double longitude, double latitude){
+    private String getCityName(double longitude, double latitude)
+    {
         String cityName = "Not Found";
         Geocoder gcd = new Geocoder(getActivity().getBaseContext(), Locale.getDefault());
-        try{
-            List<Address> addresses = gcd.getFromLocation(latitude, longitude,10);
+        try {
+            List<Address> addresses = gcd.getFromLocation(latitude, longitude, 10);
 
-            for (Address address : addresses){
-                if(address != null){
+            for (Address address : addresses) {
+                if (address != null) {
                     String city = address.getLocality();
-                    if(city != null && !city.equals("")){
+                    if (city != null && !city.equals("")) {
                         cityName = city;
-                    }
-                    else{
+                    } else {
                         Log.d("TAG", "CITY NOT FOUND");
                         Toast.makeText(getContext(), "City Not Found...", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return cityName;
     }
 
-    private void getWeatherInfo(String cityname){
+    private void getWeatherInfo(String cityname)
+    {
         String url = "https://api.weatherapi.com/v1/forecast.json?key=e0b1e813972343d38a9213132220612 &q=Montreal&days=1&aqi=yes&alerts=yes";
         txtCityName.setText(cityname);
+        Context context = getContext();
+        if (context == null) {
+            context = navController.getContext();
+        }
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
 
+        Context finalContext = context;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(JSONObject response)
+            {
                 loadingProgressBar.setVisibility(View.GONE);
                 homeRl.setVisibility(View.VISIBLE);
-                rlWeatherRoot.setBackground(getResources().getDrawable(R.drawable.transparent_rounded));
-                rlWeatherRoot.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+                rlWeatherRoot.setBackground(finalContext.getResources().getDrawable(R.drawable.transparent_rounded));
+                rlWeatherRoot.setBackgroundColor(finalContext.getResources().getColor(android.R.color.transparent));
 
                 try {
                     String temperature = response.getJSONObject("current").getString("temp_c");
@@ -186,28 +206,12 @@ public class WeatherFragment extends Fragment {
 
                     txtCondition.setText(condition);
 
-                    if(isDay == 1){
+                    if (isDay == 1) {
                         //morning
                         Picasso.get().load("https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80").into(ivBackground);
-                    }
-                    else{
+                    } else {
                         Picasso.get().load("https://images.unsplash.com/photo-1527190997915-67ce3b53cc58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80").into(ivBackground);
                     }
-
-//                    JSONObject forecastObj = response.getJSONObject("forecast");
-//                    JSONObject forecastDay = forecastObj.getJSONArray("forecastday").getJSONObject(0);
-//                    JSONArray hours = forecastDay.getJSONArray("hour");
-//
-//                    for (int i =0; i< hours.length(); i++){
-//                        JSONObject hourObj = hours.getJSONObject(i);
-//                        String time = hourObj.getString("time");
-//                        String temp = hourObj.getString("temp_c");
-//                        String img = hourObj.getJSONObject("condition").getString("icon");
-//                        String wind = hourObj.getString("wind_kph");
-//                    }
-
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -216,7 +220,8 @@ public class WeatherFragment extends Fragment {
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void onErrorResponse(VolleyError error)
+            {
                 Toast.makeText(getContext(), "City Name Not Valid", Toast.LENGTH_SHORT).show();
             }
         });

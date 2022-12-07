@@ -4,23 +4,19 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.farmerverse.R;
-import com.example.farmerverse.databinding.FragmentHomeBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 import java.time.DayOfWeek;
@@ -43,6 +39,7 @@ public class HomeFragment extends Fragment {
     private NavController navController;
     private NavHostFragment navHostFragment;
     private FarmerverseViewModel farmerverseViewModel;
+    private FrameLayout flWeather;
 
     public HomeFragment()
     {
@@ -91,11 +88,19 @@ public class HomeFragment extends Fragment {
         navController = navHostFragment.getNavController();
 
 
-        Fragment child = new WeatherFragment();
+        Fragment child = new WeatherWidgetFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.weather, child).commit();
+        transaction.replace(R.id.flWeather, child).commit();
 
-        view.findViewById(R.id.weather).setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+        view.findViewById(R.id.flWeather).setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        view.findViewById(R.id.flWeather).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                navController.navigate(R.id.action_homeFragment_to_fullWeatherFragment);
+            }
+        });
 
         view.findViewById(R.id.btnInventory).setOnClickListener(new View.OnClickListener() {
             @Override

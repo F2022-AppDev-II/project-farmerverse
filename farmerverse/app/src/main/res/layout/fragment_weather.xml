@@ -5,7 +5,7 @@
     android:id="@+id/rlWeatherRoot"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    tools:context=".fragments.WeatherFragment"
+    tools:context=".fragments.WeatherWidgetFragment"
     android:background="@color/black_shade_1">
     <ProgressBar
         android:id="@+id/pbLoading"

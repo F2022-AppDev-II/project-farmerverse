@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_homeFragment_to_marketFragment"
             app:destination="@id/marketFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fullWeatherFragment"
+            app:destination="@id/fullWeatherFragment" />
 
     </fragment>
 
@@ -85,5 +88,9 @@
     <fragment
         android:id="@+id/marketFragment"
         android:name="com.example.farmerverse.fragments.MarketFragment"
-        android:label="MarketFragment" />d
+        android:label="MarketFragment" />
+    <fragment
+        android:id="@+id/fullWeatherFragment"
+        android:name="com.example.farmerverse.fragments.FullWeatherFragment"
+        android:label="FullWeatherFragment" />d
 </navigation>
