@@ -1,5 +1,6 @@
 package com.example.farmerverse.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,10 +117,11 @@ public class Calculator extends Fragment {
         txtPerSquareMeter = view.findViewById(R.id.txtSeedsPerSquareMeter);
 
         //add items to spinner from DB
-        List<StringWithId> spinnerSeedList = new ArrayList<>();
+
         LiveData<List<Seed>> seeds;
         try {
             seeds = farmerverseViewModel.getAllSeeds();
+            Context context = getContext();
             //Have to observe because it is done async and might be null sp onChanged gets called when it is no longer null
             seeds.observe(getActivity(), new Observer<List<Seed>>() {
                 @Override
@@ -127,12 +129,13 @@ public class Calculator extends Fragment {
                 {
                     //Now seeds is not null, if the db was changed somehow during lifetime of this fragment,
                     //the spinner will also update
+                    List<StringWithId> spinnerSeedList = new ArrayList<>();
                     for (Seed seed : seeds
                     ) {
                         spinnerSeedList.add(new StringWithId(seed.getName(), seed.getId()));
                     }
                     //set spinner adapter
-                    ArrayAdapter<StringWithId> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, spinnerSeedList);
+                    ArrayAdapter<StringWithId> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, spinnerSeedList);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     seedSpinner.setAdapter(adapter);
                 }

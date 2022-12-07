@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlFullWeatherRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    tools:context=".fragments.WeatherWidgetFragment">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txtCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Montreal"
+            android:textColor="@color/white"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/txtTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtCityName"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="26"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TemperatureSize" />
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_below="@+id/txtTemperature"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/barn" />
+
+        <TextView
+            android:id="@+id/txtCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivIcon"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Condition"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rvWeather"
+            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Today's Weather Forecast"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

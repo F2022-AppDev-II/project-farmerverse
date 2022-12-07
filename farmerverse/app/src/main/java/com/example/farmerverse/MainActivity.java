@@ -1,24 +1,21 @@
 package com.example.farmerverse;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.farmerverse.databinding.ActivityMainBinding;
-import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +69,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode== 1){
+            if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permissions Granted", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, "Please Provide the Permissions", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
 
     @Override
     public boolean onSupportNavigateUp()
