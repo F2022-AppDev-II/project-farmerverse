@@ -65,6 +65,7 @@
         android:id="@+id/txtHarvest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/roboto_slab_semi_bold"
         android:text="@string/days_till_harvest"
         android:textSize="34sp"
