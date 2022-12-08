@@ -155,7 +155,7 @@ public class CropCameraFragment extends Fragment {
             contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName);
             contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
 
-            if(Build.VERSION.SDK_INT > 30){
+            if(Build.VERSION.SDK_INT >= 30){
                 contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CropTracker");
             }
 
