@@ -66,12 +66,8 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.example.farmerverse.fragments.CropCamera"
+        android:name="com.example.farmerverse.fragments.CropCameraFragment"
         android:label="Camera">
-
-        <!--        <action-->
-        <!--            android:id="@id/action_homeFragment_to_cameraFragment"-->
-        <!--            app:destination="@id/cameraFragment"/>-->
     </fragment>
 
 
@@ -92,5 +88,5 @@
     <fragment
         android:id="@+id/fullWeatherFragment"
         android:name="com.example.farmerverse.fragments.FullWeatherFragment"
-        android:label="Weather" />d
+        android:label="Weather" />
 </navigation>
