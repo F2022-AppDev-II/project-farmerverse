@@ -30,12 +30,14 @@ public class AlertDialogFragment extends DialogFragment {
 
 
     private final int seedId;
+    private final boolean isFromFocus;
     private FarmerverseViewModel farmerverseViewModel;
     private NavController navController;
 
-    public AlertDialogFragment(int seedId)
+    public AlertDialogFragment(int seedId, boolean isFromFocus)
     {
         this.seedId = seedId;
+        this.isFromFocus = isFromFocus;
     }
 
 
@@ -84,7 +86,8 @@ public class AlertDialogFragment extends DialogFragment {
             {
                 farmerverseViewModel.deleteSeed(seedId);
                 dismiss();
-                navController.popBackStack();
+                if (isFromFocus)
+                    navController.popBackStack();
             }
         });
 

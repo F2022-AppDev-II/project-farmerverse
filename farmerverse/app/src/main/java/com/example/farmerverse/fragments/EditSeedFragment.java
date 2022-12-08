@@ -115,7 +115,7 @@ public class EditSeedFragment extends Fragment {
             public void onClick(View v)
             {
                 //are you sure screen
-                AlertDialogFragment dialog = new AlertDialogFragment(seedId);
+                AlertDialogFragment dialog = new AlertDialogFragment(seedId, true);
                 dialog.show(supportFragmentManager, "Alert");
             }
         });

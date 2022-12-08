@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.farmerverse.R;
+import com.example.farmerverse.adapters.WeatherRvAdapter;
 import com.example.farmerverse.model.WeatherRvModel;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
