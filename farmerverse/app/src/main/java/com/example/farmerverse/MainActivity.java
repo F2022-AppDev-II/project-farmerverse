@@ -20,11 +20,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.farmerverse.notification.NotificationPublisher;
+import com.example.farmerverse.notification.NotificationReceiver;
 import com.example.farmerverse.databinding.ActivityMainBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = binding.getRoot().getContext();
 
-        //////// DEMO PURPOSES
+//        DEMO PURPOSES
 //        demoButton = findViewById(R.id.btnDate);
 //        demoButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -111,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scheduleNotification(Notification notification, long delay){
-        Intent notificationIntent = new Intent(this, NotificationPublisher.class );
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        Intent notificationIntent = new Intent(this, NotificationReceiver.class );
+        notificationIntent.putExtra(NotificationReceiver.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationReceiver.NOTIFICATION, notification);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         assert alarmManager != null;

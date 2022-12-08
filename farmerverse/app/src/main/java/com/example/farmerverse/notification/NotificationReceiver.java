@@ -8,15 +8,7 @@ import android.content.BroadcastReceiver ;
 import android.content.Context ;
 import android.content.Intent ;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.farmerverse.MainActivity;
-import com.example.farmerverse.R;
-
-public class NotificationPublisher extends BroadcastReceiver{
+public class NotificationReceiver extends BroadcastReceiver{
 
     public static String NOTIFICATION_ID = "notification-id";
     public static String NOTIFICATION = "notification";
