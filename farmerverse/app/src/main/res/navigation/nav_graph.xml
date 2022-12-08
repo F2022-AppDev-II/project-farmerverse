@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_homeFragment_to_marketFragment"
             app:destination="@id/marketFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fullWeatherFragment"
+            app:destination="@id/fullWeatherFragment" />
 
     </fragment>
 
@@ -55,17 +58,16 @@
         <argument
             android:name="seedId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_editSeedFragment_to_alertDialogFragment"
+            app:destination="@id/alertDialogFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.example.farmerverse.fragments.CropCameraFragment"
-        android:label="CameraFragment">
-
-<!--        <action-->
-<!--            android:id="@id/action_homeFragment_to_cameraFragment"-->
-<!--            app:destination="@id/cameraFragment"/>-->
+        android:label="Camera">
     </fragment>
 
 
@@ -75,8 +77,16 @@
         android:label="@string/calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment
+        android:id="@+id/alertDialogFragment"
+        android:name="com.example.farmerverse.fragments.AlertDialogFragment"
+        android:label="Are You Sure"
+        tools:layout="@layout/fragment_alert_dialog" />
+    <fragment
         android:id="@+id/marketFragment"
         android:name="com.example.farmerverse.fragments.MarketFragment"
-        android:label="fragment_market"
-        tools:layout="@layout/fragment_market_item_list" />
+        android:label="MarketPlace" />
+    <fragment
+        android:id="@+id/fullWeatherFragment"
+        android:name="com.example.farmerverse.fragments.FullWeatherFragment"
+        android:label="Weather" />
 </navigation>

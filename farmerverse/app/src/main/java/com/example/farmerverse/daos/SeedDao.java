@@ -37,4 +37,7 @@ public interface SeedDao {
 
     @Query("UPDATE seed_table SET quantity = quantity+:amount WHERE id=:id")
     void addSeeds(double amount, int id);
+
+    @Query("SELECT * FROM seed_table")
+    List<Seed> getAllSeedsList();
 }

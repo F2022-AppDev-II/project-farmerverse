@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <FrameLayout
+        android:id="@+id/flWeather"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="#4C83A8"
+        android:clickable="true"
         android:contentDescription="@string/temp_for_temp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHarvest"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumberOfDays"
         app:srcCompat="@android:drawable/ic_menu_mapmode" />
 
     <Button
@@ -28,7 +29,7 @@
         android:layout_marginTop="64dp"
         android:text="@string/calculator"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/flWeather" />
 
     <Button
         android:id="@+id/btnMarket"
@@ -64,6 +65,8 @@
         android:id="@+id/txtHarvest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/roboto_slab_semi_bold"
         android:text="@string/days_till_harvest"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -71,27 +74,44 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="match_parent"
+        android:id="@+id/txtNumberOfDays"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:text="123 Days"
+        android:textSize="@dimen/TitleText"
+        app:layout_constraintEnd_toEndOf="@+id/txtHarvest"
+        app:layout_constraintTop_toBottomOf="@+id/txtHarvest" />
+
+
+    <TextView
+        android:id="@+id/TextViewDate"
+        android:layout_width="242dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="4dp"
         android:hint="Set Reminder for Picture Day"
         android:onClick="setDate"
         android:padding="16dp"
+        android:textColor="@color/black_shade_1"
+        android:textColorHighlight="#3F51B5"
+        android:textColorLink="#3F51B5"
+        android:textIsSelectable="false"
+        android:textSize="16sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+<!--    demo purposes-->
 <!--    <Button-->
 <!--        android:id="@+id/btnDate"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="170dp"-->
-<!--        android:layout_marginEnd="147dp"-->
-<!--        android:text="Button"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/tvDate"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:text="Demo"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

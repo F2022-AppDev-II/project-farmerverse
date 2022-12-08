@@ -1,5 +1,6 @@
 package com.example.farmerverse;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -7,7 +8,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Notification;
@@ -16,15 +20,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.farmerverse.notification.NotificationPublisher;
+import com.example.farmerverse.notification.NotificationReceiver;
 import com.example.farmerverse.databinding.ActivityMainBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = binding.getRoot().getContext();
 
-        //////// DEMO PURPOSES
+//        DEMO PURPOSES
 //        demoButton = findViewById(R.id.btnDate);
 //        demoButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -104,6 +105,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode== 1){
+            if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permissions Granted", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(this, "Please Provide the Permissions", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    @Override
     public boolean onSupportNavigateUp()
     {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -111,9 +127,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scheduleNotification(Notification notification, long delay){
-        Intent notificationIntent = new Intent(this, NotificationPublisher.class );
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        Intent notificationIntent = new Intent(this, NotificationReceiver.class );
+        notificationIntent.putExtra(NotificationReceiver.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationReceiver.NOTIFICATION, notification);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         assert alarmManager != null;
@@ -140,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         ).show() ;
     }
 
-    private void createInformationForNotifcation() {
+    private void createInformationForNotification() {
         String myFormat = "dd/MM/yy" ; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat , Locale.getDefault ()) ;
         Date date = notificationCalendar.getTime() ;
@@ -158,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             notificationCalendar.set(Calendar. YEAR , year) ;
             notificationCalendar.set(Calendar. MONTH , monthOfYear) ;
             notificationCalendar.set(Calendar. DAY_OF_MONTH , dayOfMonth) ;
-            createInformationForNotifcation() ;
+            createInformationForNotification() ;
         }
     };
 }

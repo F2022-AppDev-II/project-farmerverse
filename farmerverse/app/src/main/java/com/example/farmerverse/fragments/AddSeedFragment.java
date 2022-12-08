@@ -21,9 +21,7 @@ import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 import com.google.gson.Gson;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddSeedFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * This is the fragment where a user will be able to add a {@link Seed} to the {@link com.example.farmerverse.database.FarmerverseRoomDatabase}
  */
 public class AddSeedFragment extends Fragment {
     public static final String EXTRA_REPLY = "com.example.android.seedlistsql.REPLY";
@@ -68,6 +66,14 @@ public class AddSeedFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Called when the fragment gets created
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return Fragment View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -76,12 +82,15 @@ public class AddSeedFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_seed, container, false);
 
 
+        //populate the ViewModel
         farmerverseViewModel = new ViewModelProvider(getActivity()).get(FarmerverseViewModel.class);
-        //NavController
+
+        //Get the NavController
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
 
+        //Get all XML the elements on the page
         seedName = view.findViewById(R.id.editTxtSeedName);
         spaceBetween = view.findViewById(R.id.editTxtSpaceBetween);
         quantity = view.findViewById(R.id.editTxtQuantity);
@@ -91,6 +100,7 @@ public class AddSeedFragment extends Fragment {
         final Button submitBtn = view.findViewById(R.id.btnSubmit);
         final Button cancelBtn = view.findViewById(R.id.btnCancel);
 
+        //Used to Jsonify objects into strings so that they can get passed around if needed
         Gson gson = new Gson();
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -117,12 +127,20 @@ public class AddSeedFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Adds a seed to the database by using the viewmodel created in onCreateView
+     */
     private void addSeedToDb()
     {
         Seed seed = new Seed(seedName.getText().toString(), spaceBetweenDouble, quantityDouble, growthTimeInt, weightPerSeedDouble);
         farmerverseViewModel.insertSeed(seed);
     }
 
+    /**
+     * Checks to see if the form is filled in properly
+     *
+     * @return True if filled in right, false otherwise
+     */
     private boolean isFormValid()
     {
         try {

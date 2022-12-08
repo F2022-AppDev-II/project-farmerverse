@@ -1,6 +1,7 @@
 package com.example.farmerverse.database;
 
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.room.AutoMigration;
@@ -39,6 +40,15 @@ public abstract class FarmerverseRoomDatabase extends RoomDatabase {
                 }
             }
         }
+        //uncomment to reset
+        //INSTANCE.seedDao().deleteAll();
+        if(INSTANCE.seedDao().getAllSeedsList().size() < 1){
+            INSTANCE.seedDao().insert(new Seed("Watermelon", 15,10,50,0.5));
+            INSTANCE.seedDao().insert(new Seed("Squash", 20,15,70,0.5));
+            INSTANCE.seedDao().insert(new Seed("Corn", 10,100,50,0.5));
+            INSTANCE.seedDao().insert(new Seed("Wheat", 15,10,50,0.5));
+        }
+
         return INSTANCE;
     }
 
