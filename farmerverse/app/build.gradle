@@ -55,6 +55,11 @@ dependencies {
 
     //Emmanuelle added this line below
     implementation 'androidx.camera:camera-extensions:1.1.0'
+
+    //Notification
+    def core_version = "1.6.0"
+    implementation "androidx.core:core:$core_version"
+
     implementation 'com.google.android.material:material:1.7.0'
     def nav_version = "2.5.2"
     implementation "androidx.fragment:fragment:1.5.4"

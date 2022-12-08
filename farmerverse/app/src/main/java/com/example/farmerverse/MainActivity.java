@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.farmerverse.fragments.CropCameraFragment;
 import com.example.farmerverse.notification.NotificationReceiver;
 import com.example.farmerverse.databinding.ActivityMainBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String CONTENT_NOTIFICATION = " Take a picture of your crop!";
     public static final String NOTIFICATION_CHANNEL_ID = "10001";
     private final static String default_notification_channel_id = "default";
-//    public Button demoButton;
+    public Button demoButton;
     public Context context;
 
 
@@ -69,13 +70,13 @@ public class MainActivity extends AppCompatActivity {
         context = binding.getRoot().getContext();
 
 //        DEMO PURPOSES
-//        demoButton = findViewById(R.id.btnDate);
-//        demoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                scheduleNotification(createNotification("Take a picture of your crop!"), 2000);
-//            }
-//        });
+        demoButton = findViewById(R.id.btnDate);
+        demoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduleNotification(createNotification("Take a picture of your crop!"), 2000);
+            }
+        });
 
     }
 
@@ -138,12 +139,20 @@ public class MainActivity extends AppCompatActivity {
 
     private Notification createNotification(String content){
 
+        Intent takeAPicture = new Intent(this, NotificationReceiver.class);
+        takeAPicture.setAction("take_a_picture");
+        takeAPicture.putExtra("100", 0);
+        PendingIntent takeAPicturePendingIntent =
+                PendingIntent.getBroadcast(this, 0, takeAPicture, 0);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder( this, default_notification_channel_id )
                 .setContentTitle("Attention Farmer!")
                 .setContentText(content)
                 .setSmallIcon(androidx.transition.R.drawable.notification_template_icon_bg)
                 .setAutoCancel(true)
-                .setChannelId(NOTIFICATION_CHANNEL_ID);
+                .setChannelId(NOTIFICATION_CHANNEL_ID)
+                .setContentIntent(takeAPicturePendingIntent)
+                .addAction(R.drawable.item_rounded_bg, "SNAP", takeAPicturePendingIntent);
 
         return builder.build();
     }

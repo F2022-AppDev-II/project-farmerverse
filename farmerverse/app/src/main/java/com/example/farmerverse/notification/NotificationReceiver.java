@@ -8,14 +8,20 @@ import android.content.BroadcastReceiver ;
 import android.content.Context ;
 import android.content.Intent ;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.farmerverse.R;
+
 public class NotificationReceiver extends BroadcastReceiver{
 
     public static String NOTIFICATION_ID = "notification-id";
     public static String NOTIFICATION = "notification";
 
-
     @Override
     public void onReceive(Context context, Intent intent) {
+
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = intent.getParcelableExtra(NOTIFICATION);
         if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES. O ) {
@@ -26,7 +32,14 @@ public class NotificationReceiver extends BroadcastReceiver{
         }
         int id = intent.getIntExtra( NOTIFICATION_ID , 0 ) ;
         assert notificationManager != null;
-        notificationManager.notify(id , notification) ;
 
+        if(intent.getAction() != null){
+            if(intent.getAction().equals("take_a_picture")){
+                System.out.printf("hello");
+            }
+        }else
+        {
+            notificationManager.notify(id , notification) ;
+        }
     }
 }

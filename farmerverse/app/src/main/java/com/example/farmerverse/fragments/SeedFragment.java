@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,8 +84,29 @@ public class SeedFragment extends Fragment {
                 final SeedListAdapter adapter = new SeedListAdapter((new SeedListAdapter.SeedDiff()));
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+                //Swipe to delete
+                ItemTouchHelper helper = new ItemTouchHelper(
+                        new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+                            @Override
+                            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                                return false;
+                            }
+
+                            @Override
+                            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                                int position = viewHolder.getBindingAdapterPosition();
+                                Seed seed = adapter.getCurrentList().get(position);
+                                farmerverseViewModel.deleteSeed(seed.getId());
+                            }
+                        }
+                );
+                helper.attachToRecyclerView(recyclerView);
+
                 adapter.submitList(seeds);
             }
+
+
         });
 //        farmerverseViewModel.getAllSeeds().observe(getActivity(), seeds -> {
 //            adapter.submitList(seeds);
@@ -104,8 +127,32 @@ public class SeedFragment extends Fragment {
         });
 
 
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeCallBack);
+//        itemTouchHelper.attachToRecyclerView(recyclerView);
+
         return view;
     }
+
+
+//    ItemTouchHelper.SimpleCallback swipeCallBack = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+//        @Override
+//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//            return false;
+//        }
+//
+//        @Override
+//        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//            int position = viewHolder.getBindingAdapterPosition();
+//            Seed seed = farmerverseVi
+//        }
+//    };
+
+
+    public Seed getSeedAtPosition(int position){
+        return farmerverseViewModel.getSeed(position);
+    }
+
+
 
 
 }

@@ -79,5 +79,6 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
             return oldItem.getId() == newItem.getId();
         }
     }
+
 }
 
