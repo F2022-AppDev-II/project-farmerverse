@@ -25,7 +25,7 @@ import android.widget.TextView;
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.fragments.AlertDialogFragment;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 class SeedViewHolder extends RecyclerView.ViewHolder {
     private final TextView seedName;

@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.farmerverse.R;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

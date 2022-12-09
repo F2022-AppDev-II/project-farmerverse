@@ -7,12 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.model.Product;
+import com.example.farmerverse.repository.viewmodel.MyProducts;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 class ProductViewHolder extends RecyclerView.ViewHolder{
@@ -46,6 +51,8 @@ class ProductViewHolder extends RecyclerView.ViewHolder{
 
 public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> {
 
+    MyProducts prods;
+
     public ProductListAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
         super(diffCallback);
     }
@@ -63,10 +70,18 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
         bundle.putInt("prodId", current.getId());
         holder.bind(current.getName(), current.getQuantity(), current.getPrice());
 
+        holder.itemView.findViewById(R.id.btnRemoveProd).setOnClickListener(v -> {
+            this.prods.delete(holder.getAbsoluteAdapterPosition());
+            notifyDataSetChanged();
+        });
 
     }
 
-    public static class ProductDiff extends DiffUtil.ItemCallback<Product>{
+    public void injectProds(MyProducts products) {
+        this.prods = products;
+    }
+
+    public static class ProductDiff extends DiffUtil.ItemCallback<Product> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {
@@ -79,6 +94,4 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
         }
     }
 
-
 }
-

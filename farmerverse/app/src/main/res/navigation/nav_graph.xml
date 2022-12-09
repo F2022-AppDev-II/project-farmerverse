@@ -39,10 +39,13 @@
             app:destination="@id/calculator" />
         <action
             android:id="@+id/action_homeFragment_to_marketFragment"
-            app:destination="@id/marketFragment" />
+            app:destination="@id/marketFragment"
+            app:enterAnim="@animator/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_fullWeatherFragment"
             app:destination="@id/fullWeatherFragment" />
+
 
     </fragment>
 
@@ -85,12 +88,47 @@
         android:name="com.example.farmerverse.fragments.AlertDialogFragment"
         android:label="Are You Sure"
         tools:layout="@layout/fragment_alert_dialog" />
-    <fragment
-        android:id="@+id/marketFragment"
-        android:name="com.example.farmerverse.fragments.MarketFragment"
-        android:label="MarketPlace" />
+
+
     <fragment
         android:id="@+id/fullWeatherFragment"
         android:name="com.example.farmerverse.fragments.FullWeatherFragment"
         android:label="Weather" />
+
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.example.farmerverse.fragments.Market.MarketFragment"
+        android:label="@string/market"
+        tools:layout="@layout/fragment_market_item_list">
+
+        <action
+            android:id="@+id/action_marketFrag_to_addProdFrag"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="argNewProducts"
+            app:argType="com.example.farmerverse.repository.viewmodel.MyProducts" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.farmerverse.fragments.Market.AddProductFragment"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_addProd_to_Home"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_addProd_to_Market"
+            app:destination="@id/marketFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_pop_exit_anim" />
+        <argument
+            android:name="argsProductsViewModel"
+            app:argType="com.example.farmerverse.repository.viewmodel.MyProducts" />
+    </fragment>
+
 </navigation>

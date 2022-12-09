@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 import com.example.farmerverse.R;
 import com.example.farmerverse.adapters.SeedListAdapter;
 import com.example.farmerverse.entities.Seed;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 import java.util.List;
 

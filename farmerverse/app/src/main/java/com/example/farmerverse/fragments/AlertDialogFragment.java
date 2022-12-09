@@ -19,7 +19,7 @@ import android.view.Window;
 import com.example.farmerverse.R;
 import com.example.farmerverse.databinding.FragmentAlertDialogBinding;
 import com.example.farmerverse.entities.Seed;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
