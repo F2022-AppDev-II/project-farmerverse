@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String CONTENT_NOTIFICATION = " Take a picture of your crop!";
     public static final String NOTIFICATION_CHANNEL_ID = "10001";
     private final static String default_notification_channel_id = "default";
-    //    public Button demoButton;
+    public Button demoButton;
     public Context context;
     private LocationManager locationManager;
 
@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         context = binding.getRoot().getContext();
 
 //        DEMO PURPOSES
-//        demoButton = findViewById(R.id.btnDate);
-//        demoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                scheduleNotification(createNotification("Take a picture of your crop!"), 2000);
-//            }
-//        });
+        demoButton = findViewById(R.id.btnDate);
+        demoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduleNotification(createNotification("Take a picture of your crop!"), 2000);
+            }
+        });
 
     }
 
