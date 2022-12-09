@@ -38,15 +38,14 @@
     <FrameLayout
         android:id="@+id/flWeather"
         android:layout_width="match_parent"
-        android:layout_height="261dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="370dp"
         android:background="#4C83A8"
         android:clickable="true"
         android:contentDescription="@string/temp_for_temp"
-        app:layout_constraintBottom_toBottomOf="@+id/TextViewDate"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalculator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,10 +59,10 @@
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/calculator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flWeather" />
+        app:layout_constraintBottom_toTopOf="@+id/btnCamera"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnMarket"
@@ -81,10 +80,10 @@
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/camera"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalculator" />
+        app:layout_constraintBottom_toTopOf="@+id/TextViewDate"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnInventory"
@@ -93,9 +92,7 @@
         android:layout_marginEnd="32dp"
         android:text="@string/inventory"
         app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnCamera"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/txtNumberOfDays"
