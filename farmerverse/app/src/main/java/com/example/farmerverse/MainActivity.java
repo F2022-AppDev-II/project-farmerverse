@@ -10,7 +10,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -34,11 +33,11 @@ import android.widget.Toast;
 import com.example.farmerverse.fragments.CropCameraFragment;
 import com.example.farmerverse.notification.NotificationReceiver;
 import com.example.farmerverse.databinding.ActivityMainBinding;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 public class MainActivity extends AppCompatActivity {
 

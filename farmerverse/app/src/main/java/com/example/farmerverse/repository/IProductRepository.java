@@ -9,4 +9,5 @@ public interface IProductRepository {
     Product getById(int id);
     void add(Product product);
     void delete(int id);
+    Product getLast();
 }

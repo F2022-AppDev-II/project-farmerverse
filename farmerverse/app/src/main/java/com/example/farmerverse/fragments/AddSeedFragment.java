@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 import com.google.gson.Gson;
 
 /**

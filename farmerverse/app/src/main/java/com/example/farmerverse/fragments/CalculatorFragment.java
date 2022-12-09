@@ -25,7 +25,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.helpers.StringWithId;
-import com.example.farmerverse.viewmodel.FarmerverseViewModel;
+import com.example.farmerverse.repository.viewmodel.FarmerverseViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
