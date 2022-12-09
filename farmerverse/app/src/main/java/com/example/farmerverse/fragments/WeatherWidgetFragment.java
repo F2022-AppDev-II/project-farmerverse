@@ -1,21 +1,28 @@
 package com.example.farmerverse.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +55,7 @@ import java.util.Locale;
  */
 public class WeatherWidgetFragment extends Fragment {
 
+    final static String DEFAULT_CITY_NAME = "Montreal";
     private RelativeLayout homeRl, rlWeatherRoot;
     private ProgressBar loadingProgressBar;
     private TextView txtCityName, txtCondition, txtTemperature;
@@ -91,6 +99,13 @@ public class WeatherWidgetFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @SuppressLint("MissingPermission")
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
@@ -110,20 +125,20 @@ public class WeatherWidgetFragment extends Fragment {
         navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
 
+        Location l = getLastKnownLocation();
 
-        locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_CODE);
-        }
+        // Small Patch for presentation -- Assigning Montreal as default location to retrieve weather from
+        cityName = (l != null)? getCityName(l.getLongitude(), l.getLatitude()): DEFAULT_CITY_NAME;
 
-//        Location location = getLastKnownLocation();
-//        cityName = getCityName(location.getLongitude(), location.getLongitude());
-
-        getWeatherInfo("Montreal");
-
+        getWeatherInfo(cityName);
 
         return view;
+    }
+
+    private void requestPermission(String permissionName, int permissionRequestCode)
+    {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{permissionName}, permissionRequestCode);
     }
 
     private Location getLastKnownLocation()
@@ -132,16 +147,18 @@ public class WeatherWidgetFragment extends Fragment {
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
         for (String provider : providers) {
-            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_CODE);
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermission(Manifest.permission.ACCESS_COARSE_LOCATION, PERMISSION_CODE);
+            }
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, PERMISSION_CODE);
             }
             Location l = locationManager.getLastKnownLocation(provider);
             if (l == null) {
                 continue;
             }
             if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
+                Log.d("LOCATION", String.format("Found best last known location: %s ", l));
                 bestLocation = l;
             }
         }

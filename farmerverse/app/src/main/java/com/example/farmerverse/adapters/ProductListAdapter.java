@@ -1,4 +1,4 @@
-package com.example.farmerverse.fragments;
+package com.example.farmerverse.adapters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmerverse.R;
-import com.example.farmerverse.entities.Seed;
 import com.example.farmerverse.model.Product;
 
 
@@ -48,7 +46,7 @@ class ProductViewHolder extends RecyclerView.ViewHolder{
 
 public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> {
 
-    protected ProductListAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
+    public ProductListAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
         super(diffCallback);
     }
 
@@ -68,7 +66,7 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
 
     }
 
-    static class ProductDiff extends DiffUtil.ItemCallback<Product>{
+    public static class ProductDiff extends DiffUtil.ItemCallback<Product>{
 
         @Override
         public boolean areItemsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {

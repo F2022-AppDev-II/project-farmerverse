@@ -1,28 +1,38 @@
-package com.example.farmerverse.fragments;
+package com.example.farmerverse.adapters;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.farmerverse.R;
 import com.example.farmerverse.entities.Seed;
+import com.example.farmerverse.fragments.AlertDialogFragment;
+import com.example.farmerverse.viewmodel.FarmerverseViewModel;
 
 class SeedViewHolder extends RecyclerView.ViewHolder {
     private final TextView seedName;
     private final TextView daysToGrow;
     private final TextView quantityTextView;
     private final Button editBtn;
+    private final ImageView ivDelete;
 
 
     private SeedViewHolder(View itemView)
@@ -32,6 +42,7 @@ class SeedViewHolder extends RecyclerView.ViewHolder {
         daysToGrow = itemView.findViewById(R.id.txtDaysToGrowDatabase);
         quantityTextView = itemView.findViewById(R.id.txtDatabaseQuantity);
         editBtn = itemView.findViewById(R.id.btnEdit);
+        ivDelete = itemView.findViewById(R.id.btnTrash);
     }
 
     public void bind(String text, int growthTime, double quantity)
@@ -73,14 +84,27 @@ public class SeedListAdapter extends ListAdapter<Seed, SeedViewHolder> {
         Bundle bundle = new Bundle();
         bundle.putInt("seedId", current.getId());
         holder.bind(current.getName(), current.getGrowthTimeInDays(), current.getQuantity());
+        AppCompatActivity a = (AppCompatActivity) holder.itemView.getContext();
+        FragmentManager supportFragmentManager = a.getSupportFragmentManager();
+        NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
+        NavController navController = navHostFragment.getNavController();
 
         holder.itemView.findViewById(R.id.btnEdit).setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_seedFragment_to_editSeedFragment, bundle)
         );
+        holder.itemView.findViewById(R.id.btnTrash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                FarmerverseViewModel farmerverseViewModel = new ViewModelProvider((AppCompatActivity) holder.itemView.getContext()).get(FarmerverseViewModel.class);
+                AlertDialogFragment dialog = new AlertDialogFragment(current.getId(), false);
+                dialog.show(supportFragmentManager, "Alert");
+            }
+        });
 
     }
 
-    static class SeedDiff extends DiffUtil.ItemCallback<Seed> {
+    public static class SeedDiff extends DiffUtil.ItemCallback<Seed> {
         @Override
         public boolean areItemsTheSame(@NonNull Seed oldItem, @NonNull Seed newItem)
         {

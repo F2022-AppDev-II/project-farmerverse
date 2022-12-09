@@ -1,4 +1,4 @@
-package com.example.farmerverse.fragments;
+package com.example.farmerverse.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -148,7 +148,6 @@ public class CalculatorFragment extends Fragment {
             Toast.makeText(getContext(), "Something went wrong populating the spinner", Toast.LENGTH_SHORT).show();
         }
 
-
         //SET LISTENERS
         seedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
