@@ -9,7 +9,8 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
+        android:layout_marginTop="192dp"
         android:src="@drawable/plant" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
