@@ -29,7 +29,7 @@ public class AddProductFragment extends Fragment {
     String name;
     String price;
     String qty;
-    public static IProductRepository products;
+    public static MyProducts products;
 
     private NavController navController;
     View view;
@@ -95,6 +95,9 @@ public class AddProductFragment extends Fragment {
     private void addIfValid() {
         if(validateInput()){
             products.add(new Product( products.getAll().size(), name, Integer.parseInt(qty), Double.parseDouble(price) ));
+            ((EditText) getActivity().findViewById(R.id.prod_name_hint)).setText("");
+            ((EditText) getActivity().findViewById(R.id.prod_qty_hint)).setText("");
+            ((EditText) getActivity().findViewById(R.id.prod_price_hint)).setText("");
             Snackbar.make(getView(), "Product added successfully!", Snackbar.LENGTH_SHORT).show();
         }
 
@@ -128,8 +131,12 @@ public class AddProductFragment extends Fragment {
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main);
         navController = navHostFragment.getNavController();
+        view.findViewById(R.id.go_market).setOnClickListener(view1 -> goToMarket());
+    }
 
-        view.findViewById(R.id.go_home).setOnClickListener(view1 -> navController.navigate(R.id.action_addProd_to_Home));
-        view.findViewById(R.id.go_market).setOnClickListener(view1 -> navController.navigate(R.id.action_addProd_to_Market));
+    private void goToMarket() {
+        AddProductFragmentDirections.ActionAddProdToMarket dir = AddProductFragmentDirections.actionAddProdToMarket(products);
+
+        navController.navigate(dir);
     }
 }

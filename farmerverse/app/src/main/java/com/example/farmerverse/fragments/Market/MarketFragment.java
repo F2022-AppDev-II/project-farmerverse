@@ -60,13 +60,13 @@ public class MarketFragment extends Fragment {
         Context context = view.getContext();
 
         // Loads default data
-        products = new MyProducts();
+        loadProducts();
 
 
         // List Adapter
         adapter = new ProductListAdapter((new ProductListAdapter.ProductDiff()));
         adapter.submitList(products.getAll());
-
+        adapter.injectProds(products);
         // Recycler View
         RecyclerView recyclerView = view.findViewById(R.id.market_list);
         recyclerView.setAdapter(adapter);
@@ -77,6 +77,13 @@ public class MarketFragment extends Fragment {
         btnListeners();
 
         return view;
+    }
+
+    private void loadProducts() {
+
+        if (getArguments().isEmpty() &&  products == null)
+            products = new MyProducts();
+
     }
 
     private void navigation() {

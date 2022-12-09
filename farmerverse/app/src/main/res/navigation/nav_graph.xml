@@ -86,6 +86,9 @@
             app:destination="@id/addProductFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="argNewProducts"
+            app:argType="com.example.farmerverse.repository.viewmodel.MyProducts" />
     </fragment>
     <fragment
         android:id="@+id/addProductFragment"

@@ -113,14 +113,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_done">
 
         <Button
-            android:id="@+id/go_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:text="@string/go_home" />
-
-        <Button
             android:id="@+id/go_market"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
