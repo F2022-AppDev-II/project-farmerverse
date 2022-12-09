@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D4ECAE"
     tools:context=".MainActivity">
 
     <ImageView
@@ -28,7 +29,7 @@
         android:layout_width="379dp"
         android:layout_height="261dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:background="#4C83A8"
         android:clickable="true"
@@ -116,7 +117,7 @@
         android:hint="Set Reminder for Picture Day"
         android:onClick="setDate"
         android:padding="16dp"
-        android:textColor="@color/black_shade_1"
+        android:textColor="@color/Black"
         android:textColorHighlight="#3F51B5"
         android:textColorLink="#3F51B5"
         android:textIsSelectable="false"
