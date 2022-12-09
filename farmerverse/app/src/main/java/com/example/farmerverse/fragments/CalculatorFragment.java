@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -51,7 +52,7 @@ public class CalculatorFragment extends Fragment {
     private EditText editTextDistanceBetweenTwoSeeds;
     private TextView txtSeedsNeeded;
     private TextView txtPerSquareMeter;
-    private RadioButton radioButtonManuallyAdd;
+    private Button btnAddSeedCalculator;
     private FarmerverseViewModel farmerverseViewModel;
     private NavController navController;
     private double squareMeters;
@@ -119,7 +120,6 @@ public class CalculatorFragment extends Fragment {
 //        RadioButton = view.findViewById(R.id.);
 
 
-
         //add items to spinner from DB
 
         LiveData<List<Seed>> seeds;
@@ -184,10 +184,10 @@ public class CalculatorFragment extends Fragment {
         });
 
 
-
-        view.findViewById(R.id.radioButtonManuallyAddSeed).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btnAddSeedCalculator).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 navController.navigate(R.id.action_calculator_to_addSeed);
             }
         });

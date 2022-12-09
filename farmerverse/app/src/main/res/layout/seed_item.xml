@@ -81,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#008AA4"
         android:fontFamily="@font/roboto_slab_semi_bold"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"

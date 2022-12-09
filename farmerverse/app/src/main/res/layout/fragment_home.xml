@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4ECAE"
     tools:context=".MainActivity">
 
     <ImageView
@@ -12,9 +11,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -24,9 +23,21 @@
         app:srcCompat="@drawable/farm_round" />
 
 
+    <TextView
+        android:id="@+id/txtHarvest"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto_slab_semi_bold"
+        android:text="@string/days_till_harvest"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumberOfDays" />
+
     <FrameLayout
         android:id="@+id/flWeather"
-        android:layout_width="379dp"
+        android:layout_width="match_parent"
         android:layout_height="261dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
@@ -47,7 +58,7 @@
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:text="@string/calculator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flWeather" />
@@ -85,28 +96,16 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/txtHarvest"
-        android:layout_width="184dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/roboto_slab_semi_bold"
-        android:text="@string/days_till_harvest"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtNumberOfDays"
-        android:layout_width="130dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_slab_semi_bold"
         android:includeFontPadding="false"
         android:text="123 Days"
         android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/txtHarvest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -132,9 +131,10 @@
         android:id="@+id/imageView2"
         android:layout_width="82dp"
         android:layout_height="84dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/txtNumberOfDays"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/flWeather"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/smart_farm" />
