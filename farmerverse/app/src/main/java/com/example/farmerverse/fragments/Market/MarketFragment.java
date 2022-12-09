@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -72,6 +73,7 @@ public class MarketFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         navigation();
 
         btnListeners();
@@ -104,13 +106,17 @@ public class MarketFragment extends Fragment {
         navController.navigate(direction);
     }
 
-    private void test() {
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
-        ArrayList<Product> b = new ArrayList<>(products.getAll());
-
-        products.add(new Product( products.getById(products.getAll().size()-1).getId(), "New" ,12,7.7 ));
-
-        adapter.notifyDataSetChanged();
-    }
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            products.delete(viewHolder.getAbsoluteAdapterPosition());
+            adapter.notifyDataSetChanged();
+        }
+    };
 
 }
