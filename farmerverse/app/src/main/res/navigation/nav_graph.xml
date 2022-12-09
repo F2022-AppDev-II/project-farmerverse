@@ -67,15 +67,19 @@
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.example.farmerverse.fragments.CropCameraFragment"
-        android:label="Camera">
+        android:label="Crop Tracker">
     </fragment>
 
 
     <fragment
         android:id="@+id/calculator"
-        android:name="com.example.farmerverse.fragments.Calculator"
+        android:name="com.example.farmerverse.fragments.CalculatorFragment"
         android:label="@string/calculator"
-        tools:layout="@layout/fragment_calculator" />
+        tools:layout="@layout/fragment_calculator" >
+        <action
+            android:id="@+id/action_calculator_to_addSeed"
+            app:destination="@id/addSeedFragment" />
+    </fragment>
     <fragment
         android:id="@+id/alertDialogFragment"
         android:name="com.example.farmerverse.fragments.AlertDialogFragment"

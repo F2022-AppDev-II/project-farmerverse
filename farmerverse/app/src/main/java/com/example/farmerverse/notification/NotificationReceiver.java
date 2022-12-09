@@ -33,13 +33,6 @@ public class NotificationReceiver extends BroadcastReceiver{
         int id = intent.getIntExtra( NOTIFICATION_ID , 0 ) ;
         assert notificationManager != null;
 
-        if(intent.getAction() != null){
-            if(intent.getAction().equals("take_a_picture")){
-                System.out.printf("hello");
-            }
-        }else
-        {
-            notificationManager.notify(id , notification) ;
-        }
+        notificationManager.notify(id , notification) ;
     }
 }

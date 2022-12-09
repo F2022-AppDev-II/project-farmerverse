@@ -108,6 +108,7 @@ public class SeedFragment extends Fragment {
 
 
         });
+
 //        farmerverseViewModel.getAllSeeds().observe(getActivity(), seeds -> {
 //            adapter.submitList(seeds);
 //        });
@@ -126,31 +127,9 @@ public class SeedFragment extends Fragment {
             }
         });
 
-
-//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeCallBack);
-//        itemTouchHelper.attachToRecyclerView(recyclerView);
-
         return view;
     }
 
-
-//    ItemTouchHelper.SimpleCallback swipeCallBack = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-//        @Override
-//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//            return false;
-//        }
-//
-//        @Override
-//        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-//            int position = viewHolder.getBindingAdapterPosition();
-//            Seed seed = farmerverseVi
-//        }
-//    };
-
-
-    public Seed getSeedAtPosition(int position){
-        return farmerverseViewModel.getSeed(position);
-    }
 
 
 

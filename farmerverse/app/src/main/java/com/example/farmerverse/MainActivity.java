@@ -139,20 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Notification createNotification(String content){
 
-        Intent takeAPicture = new Intent(this, NotificationReceiver.class);
-        takeAPicture.setAction("take_a_picture");
-        takeAPicture.putExtra("100", 0);
-        PendingIntent takeAPicturePendingIntent =
-                PendingIntent.getBroadcast(this, 0, takeAPicture, 0);
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder( this, default_notification_channel_id )
                 .setContentTitle("Attention Farmer!")
                 .setContentText(content)
-                .setSmallIcon(androidx.transition.R.drawable.notification_template_icon_bg)
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setAutoCancel(true)
-                .setChannelId(NOTIFICATION_CHANNEL_ID)
-                .setContentIntent(takeAPicturePendingIntent)
-                .addAction(R.drawable.item_rounded_bg, "SNAP", takeAPicturePendingIntent);
+                .setChannelId(NOTIFICATION_CHANNEL_ID);
 
         return builder.build();
     }

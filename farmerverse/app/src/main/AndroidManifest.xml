@@ -38,9 +38,6 @@
         </activity>
         <receiver android:name=".notification.NotificationReceiver"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action."/>
-            </intent-filter>
         </receiver>
     </application>
 
