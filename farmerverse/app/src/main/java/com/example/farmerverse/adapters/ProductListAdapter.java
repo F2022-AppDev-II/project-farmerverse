@@ -63,6 +63,7 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
         bundle.putInt("prodId", current.getId());
         holder.bind(current.getName(), current.getQuantity(), current.getPrice());
 
+
     }
 
     public static class ProductDiff extends DiffUtil.ItemCallback<Product>{
@@ -77,5 +78,7 @@ public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> 
             return oldItem.getId() == newItem.getId();
         }
     }
+
+
 }
 

@@ -13,12 +13,12 @@
     <string name="market">Market</string>
     <string name="camera">Camera</string>
     <string name="inventory">Inventory</string>
-    <string name="days_till_harvest">Days Until Harvest:</string>
+    <string name="days_till_harvest">Until Harvest</string>
     <string name="temp_for_temp">Temp for temp</string>
     <string name="home">Home</string>
     <string name="SeedType">Type of Seed</string>
     <string name="_32_cm">32 cm</string>
-    <string name="land_calculator">Land Calculator</string>
+    <string name="land_calculator">Calculate Seed Amount</string>
     <string name="square_meters">Square Meters</string>
     <string name="_32_square_meters">32 Square meters</string>
     <string name="seed_type">Seed Type</string>

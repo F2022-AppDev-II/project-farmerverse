@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +33,7 @@ class SeedViewHolder extends RecyclerView.ViewHolder {
     private final TextView quantityTextView;
     private final Button editBtn;
     private final ImageView ivDelete;
+
 
     private SeedViewHolder(View itemView)
     {
@@ -77,6 +80,7 @@ public class SeedListAdapter extends ListAdapter<Seed, SeedViewHolder> {
     public void onBindViewHolder(@NonNull SeedViewHolder holder, int position)
     {
         Seed current = getItem(position);
+
         Bundle bundle = new Bundle();
         bundle.putInt("seedId", current.getId());
         holder.bind(current.getName(), current.getGrowthTimeInDays(), current.getQuantity());
@@ -113,4 +117,5 @@ public class SeedListAdapter extends ListAdapter<Seed, SeedViewHolder> {
             return oldItem.getId() == newItem.getId();
         }
     }
+
 }

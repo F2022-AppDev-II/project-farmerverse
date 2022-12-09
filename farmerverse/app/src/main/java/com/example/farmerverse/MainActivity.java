@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.farmerverse.fragments.CropCameraFragment;
 import com.example.farmerverse.notification.NotificationReceiver;
 import com.example.farmerverse.databinding.ActivityMainBinding;
 import com.example.farmerverse.viewmodel.FarmerverseViewModel;
@@ -79,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         context = binding.getRoot().getContext();
-
 
 //        DEMO PURPOSES
 //        demoButton = findViewById(R.id.btnDate);
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, default_notification_channel_id)
                 .setContentTitle("Attention Farmer!")
                 .setContentText(content)
-                .setSmallIcon(androidx.transition.R.drawable.notification_template_icon_bg)
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setAutoCancel(true)
                 .setChannelId(NOTIFICATION_CHANNEL_ID);
 

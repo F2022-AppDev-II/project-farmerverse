@@ -11,26 +11,30 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/TextViewDate"
         app:layout_constraintTop_toBottomOf="@+id/btnInventory"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/farm_round" />
+
 
     <FrameLayout
         android:id="@+id/flWeather"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="379dp"
+        android:layout_height="261dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:background="#4C83A8"
         android:clickable="true"
         android:contentDescription="@string/temp_for_temp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNumberOfDays"
         app:srcCompat="@android:drawable/ic_menu_mapmode">
@@ -42,7 +46,7 @@
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="28dp"
         android:text="@string/calculator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flWeather" />
@@ -55,14 +59,15 @@
         android:text="@string/market"
         app:layout_constraintBottom_toBottomOf="@+id/btnCalculator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnCalculator" />
+        app:layout_constraintTop_toTopOf="@+id/btnCalculator"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnCamera"
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="@string/camera"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCalculator" />
@@ -75,30 +80,33 @@
         android:text="@string/inventory"
         app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnCamera" />
+        app:layout_constraintTop_toTopOf="@+id/btnCamera"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtHarvest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="184dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/roboto_slab_semi_bold"
         android:text="@string/days_till_harvest"
-        android:textSize="34sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtNumberOfDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/roboto_slab_semi_bold"
+        android:includeFontPadding="false"
         android:text="123 Days"
-        android:textSize="@dimen/TitleText"
-        app:layout_constraintEnd_toEndOf="@+id/txtHarvest"
-        app:layout_constraintTop_toBottomOf="@+id/txtHarvest" />
-
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtHarvest"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TextViewDate"
@@ -121,15 +129,13 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/flWeather"
+        android:layout_width="82dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="2dp"
         app:layout_constraintEnd_toStartOf="@+id/txtNumberOfDays"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHarvest"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/smart_farm" />
 
     <!--    demo purposes-->
@@ -142,5 +148,6 @@
     <!--        android:text="Demo"-->
     <!--        app:layout_constraintBottom_toBottomOf="parent"-->
     <!--        app:layout_constraintEnd_toEndOf="parent" />-->
+    <!--    demo purposes-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

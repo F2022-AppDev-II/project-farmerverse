@@ -12,7 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:state_hovered">
+
+
+        </item>
     </style>
+
+
 
 
     <style name="Theme.Farmerverse.NoActionBar">
@@ -34,5 +41,7 @@
         <item name="cornerSizeBottomLeft">10%</item>
         <item name="cornerSizeBottomRight">10%</item>
 
+
     </style>
+
 </resources>

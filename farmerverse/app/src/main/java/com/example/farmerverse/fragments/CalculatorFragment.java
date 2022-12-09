@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +32,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Calculator#newInstance} factory method to
+ * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Calculator extends Fragment {
+public class CalculatorFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +51,7 @@ public class Calculator extends Fragment {
     private EditText editTextDistanceBetweenTwoSeeds;
     private TextView txtSeedsNeeded;
     private TextView txtPerSquareMeter;
-    private RadioButton rbManuallyAddSeed;
+    private RadioButton radioButtonManuallyAdd;
     private FarmerverseViewModel farmerverseViewModel;
     private NavController navController;
     private double squareMeters;
@@ -59,7 +60,7 @@ public class Calculator extends Fragment {
     private int currentSelectedSeedId = -1;
     private double AVERAGE_ROW_SPACING_CM = 20 * 2.54;
 
-    public Calculator()
+    public CalculatorFragment()
     {
         // Required empty public constructor
     }
@@ -73,9 +74,9 @@ public class Calculator extends Fragment {
      * @return A new instance of fragment calculator.
      */
     // TODO: Rename and change types and number of parameters
-    public static Calculator newInstance(String param1, String param2)
+    public static CalculatorFragment newInstance(String param1, String param2)
     {
-        Calculator fragment = new Calculator();
+        CalculatorFragment fragment = new CalculatorFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -115,6 +116,9 @@ public class Calculator extends Fragment {
         editTextDistanceBetweenTwoSeeds = view.findViewById(R.id.editTextDistanceBetweenTwoSeeds);
         txtSeedsNeeded = view.findViewById(R.id.txtSeedsNeeded);
         txtPerSquareMeter = view.findViewById(R.id.txtSeedsPerSquareMeter);
+//        RadioButton = view.findViewById(R.id.);
+
+
 
         //add items to spinner from DB
 
@@ -179,7 +183,18 @@ public class Calculator extends Fragment {
             }
         });
 
+
+
+        view.findViewById(R.id.radioButtonManuallyAddSeed).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_calculator_to_addSeed);
+            }
+        });
+
+
         return view;
+
     }
 
     private ArrayList<Double> calculate()
@@ -212,5 +227,5 @@ public class Calculator extends Fragment {
             return false;
         }
     }
-    //TODO: Add Spinner on select Item to update the distance between 2 plants by querying database
+
 }
