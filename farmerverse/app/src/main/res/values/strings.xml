@@ -28,6 +28,12 @@
     <string name="seeds_per_square_meter">Seeds per square meter</string>
     <string name="calculate">Calculate</string>
     <string name="edit_seed">Edit Seed</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="you_are_about_to_delete_the_x_seed">You are about to delete the x seed</string>
+    <string name="yes_delete">Yes, Delete</string>
+    <string name="no_take_me_back">No, Take Me Back</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

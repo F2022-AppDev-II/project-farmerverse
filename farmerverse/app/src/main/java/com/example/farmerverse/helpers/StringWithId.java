@@ -11,17 +11,20 @@ public class StringWithId {
     private String string;
     private int id;
 
-    public StringWithId(String string, int id) {
+    public StringWithId(String string, int id)
+    {
         this.string = string;
         this.id = id;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return string;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.farmerverse.R;
+import com.example.farmerverse.adapters.ProductListAdapter;
 import com.example.farmerverse.viewmodel.MyProducts;
 
 /**
@@ -27,12 +28,14 @@ public class MarketFragment extends Fragment {
     public static MyProducts products;
     private NavController navController;
 
-    public MarketFragment() {
+    public MarketFragment()
+    {
         // Required empty public constructor
     }
 
 
-    public static MarketFragment newInstance() {
+    public static MarketFragment newInstance()
+    {
         MarketFragment fragment = new MarketFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -40,13 +43,15 @@ public class MarketFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
 
         View view = inflater.inflate(R.layout.fragment_market_item_list, container, false);
         Context context = view.getContext();

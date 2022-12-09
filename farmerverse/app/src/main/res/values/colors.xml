@@ -9,6 +9,9 @@
     <color name="material_green_800">#2E7D32</color>
     <color name="material_green_700">#388E3C</color>
     <color name="material_green_300">#81C784</color>
+    <color name="material_red_800">#C62828</color>
+    <color name="blue_grey_700">#455A64</color>
+    <color name="material_pink_300">#F06292</color>
     <color name="yellow">#FFFF00</color>
     <color name="fuchsia">#FF00FF</color>
     <color name="red">#FF0000</color>
@@ -170,4 +173,9 @@
     <color name="articlecolor">#3399FF</color>
     <color name="article_title">#3399FF</color>
     <color name="cachecolor">#8ad0e8</color>
+    <color name="black_shade_1">#292D36</color>
+    <color name="material_grey_700">#616161</color>
+    <color name="button_night_red">#991a00</color>
+    <color name="button_night_purple">#990066</color>
+    <color name="button_night_tealish">#009966</color>
 </resources>

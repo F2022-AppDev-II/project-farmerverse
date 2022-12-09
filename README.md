@@ -15,25 +15,71 @@ Links:
 [Credits](#credits)
 </div>
 
-## Features
+## _Features_
 
-### Camera
+### **Camera**
 
-### Seed Inventory Tracker
+### **Seed Inventory Tracker**
 
-### Custom Notifications
+<div align="center">
 
-### Weather Forecast
+## ****View Your Inventory in real time****
 
-### Farmers Marketplace
+![Inventory](./readmeimages/seedList.png)
 
-### Countdown to Harvest
+## ****Add a Seed****
 
-## References
+![Inventory](./readmeimages/addSeed.png)
+
+## ****Edit a Seed****
+
+![Inventory](./readmeimages/editSeed.png)
+
+## ****Custom Delete... Just in case****
+
+![Inventory](./readmeimages/customDelete.png)
+
+</div>
+
+
+### **Custom Notifications**
+
+### **Weather Forecast**
+<div align="center">
+
+## ****Live Weather on the Home Screen****
+
+![Weather](./readmeimages/weatherWidget.png)
+
+## ****Click on the widget for an Hour by Hour view****
+
+![Full Weather](./readmeimages/fullWeatherWidget.png)
+</div>
+
+### **Farmers Marketplace**
+
+### **Countdown to Harvest**
+
+## _References_
+
 
 <!-- Put links here -->
+Weather Inspired by [this](https://www.youtube.com/watch?v=q7NF-2gtfEU) youtube video by GeeksForGeeks. It was customized to suit our specific needs.
 
-## Credits
+---
+
+Weather API calls made to [weatherapi](https://www.weatherapi.com/).
+
+---
+
+Database was made using [Room](https://developer.android.com/training/data-storage/room).
+
+---
+
+
+
+
+## _Credits_
 Made by: <br>
 [Samuel Anderson](https://sanderson-96.github.io)<br>
 [Kevin-Christopher Laskai]()<br>

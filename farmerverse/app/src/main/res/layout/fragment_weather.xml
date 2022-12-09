@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlWeatherRoot"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    tools:context=".fragments.WeatherWidgetFragment"
+    android:background="@color/black_shade_1">
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlHome"
+        android:visibility="gone">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/ivBackground"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/rounded"/>
+        <TextView
+            android:id="@+id/txtCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/TitleText"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="Montreal"/>
+
+        <TextView
+            android:layout_below="@id/txtCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="26"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TemperatureSize"
+            android:id="@+id/txtTemperature"/>
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_below="@+id/txtTemperature"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/barn"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivIcon"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:id="@+id/txtCondition"
+            android:text="Condition"
+            android:textSize="24sp"/>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
