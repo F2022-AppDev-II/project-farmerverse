@@ -34,9 +34,7 @@ public class AddProductFragment extends Fragment {
     private NavController navController;
     View view;
 
-    public AddProductFragment() {
-        // Required empty public constructor
-    }
+    public AddProductFragment() {}
 
 
     public static AddProductFragment newInstance() {
@@ -64,7 +62,6 @@ public class AddProductFragment extends Fragment {
 
         btnListeners();
 
-
         return view;
     }
 
@@ -72,19 +69,17 @@ public class AddProductFragment extends Fragment {
         name = ((EditText) getActivity().findViewById(R.id.prod_name_hint)).getText().toString();
         qty = ((EditText) getActivity().findViewById(R.id.prod_qty_hint)).getText().toString();
         price = ((EditText) getActivity().findViewById(R.id.prod_price_hint)).getText().toString();
-
     }
 
     private void args() {
+        // Inject products list passed through args
         if (!getArguments().isEmpty()) {
-            AddProductFragmentArgs a = AddProductFragmentArgs.fromBundle(getArguments());
-            products = a.getArgsProductsViewModel();
+            products = AddProductFragmentArgs.fromBundle(getArguments()).getArgsProductsViewModel();
         }
     }
 
     private void btnListeners() {
         view.findViewById(R.id.btn_done).setOnClickListener(view1 -> checkData());
-
     }
 
     private void checkData() {
@@ -103,6 +98,7 @@ public class AddProductFragment extends Fragment {
 
     }
 
+    // Check for empty fields, if any prompt the user, otherwise return true
     private boolean validateInput() {
 
         StringBuilder stringBuilder = new StringBuilder();
