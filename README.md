@@ -35,16 +35,20 @@ Links:
 
 ![Inventory](./readmeimages/editSeed.png)
 
+## ****Add a Product****
+
+![Inventory](./readmeimages/AddProduct_dark.png)
+
 ## ****Custom Delete... Just in case****
 
 ![Inventory](./readmeimages/customDelete.png)
 
 </div>
 
-
 ### **Custom Notifications**
 
 ### **Weather Forecast**
+
 <div align="center">
 
 ## ****Live Weather on the Home Screen****
@@ -54,9 +58,11 @@ Links:
 ## ****Click on the widget for an Hour by Hour view****
 
 ![Full Weather](./readmeimages/fullWeatherWidget.png)
-</div>
 
 ### **Farmers Marketplace**
+
+![Full Weather](./readmeimages/Market_dark.png)
+</div>
 
 ### **Countdown to Harvest**
 
@@ -84,4 +90,4 @@ Made by: <br>
 [Samuel Anderson](https://sanderson-96.github.io)<br>
 [Kevin-Christopher Laskai]()<br>
 [Emmanuelle Oleszczuk]()<br>
-[Julian Hernandez Delgado]()<br>
+[Julian Hernandez Delgado](https://github.com/julian-hzd)<br>
