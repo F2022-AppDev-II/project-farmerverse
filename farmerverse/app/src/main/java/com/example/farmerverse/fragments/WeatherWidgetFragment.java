@@ -55,6 +55,7 @@ import java.util.Locale;
  */
 public class WeatherWidgetFragment extends Fragment {
 
+    final static String DEFAULT_CITY_NAME = "Montreal";
     private RelativeLayout homeRl, rlWeatherRoot;
     private ProgressBar loadingProgressBar;
     private TextView txtCityName, txtCondition, txtTemperature;
@@ -125,7 +126,10 @@ public class WeatherWidgetFragment extends Fragment {
         navController = navHostFragment.getNavController();
 
         Location l = getLastKnownLocation();
-        cityName = getCityName(l.getLongitude(), l.getLatitude());
+
+        // Small Patch for presentation -- Assigning Montreal as default location to retrieve weather from
+        cityName = (l != null)? getCityName(l.getLongitude(), l.getLatitude()): DEFAULT_CITY_NAME;
+
         getWeatherInfo(cityName);
 
         return view;
